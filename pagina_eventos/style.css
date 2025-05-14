@@ -1,0 +1,98 @@
+/* Container Principal */
+.all {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Área Principal */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.event-header {
+    padding: 1rem 2rem;
+}
+
+/* Conteúdo Principal */
+.content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Títulos */
+.small-title {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #E67E22;
+}
+
+.title {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+/* Linhas Verticais com esferas */
+.sidebar-line-1, .sidebar-line-2 {
+    width: 2px;
+    background-color: #000;
+    position: relative;
+    margin: 0 1rem;
+}
+
+.sidebar-line-1 {
+    height: 560px;
+}
+
+.sidebar-line-2 {
+    height: 216px;
+}
+
+.sidebar-line-1::before,
+.sidebar-line-1::after,
+.sidebar-line-2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background-color: #E67E22;
+    border-radius: 50%;
+}
+
+.sidebar-line-1::before {
+    top: 0;
+}
+
+.sidebar-line-1::after {
+    bottom: 0;
+}
+
+.sidebar-line-2::after {
+    bottom: 0;
+}
+
+/* Images */
+.logo-image{
+    width: 55px;
+    height: 55px;
+    margin-bottom: 5rem;
+}
