@@ -1,0 +1,777 @@
+.cadastro-de-eventos {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .cadastro-de-eventos .div {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+  }
+  
+  .cadastro-de-eventos .overlap-group {
+    position: absolute;
+    width: 145px;
+    height: 45px;
+    top: 898px;
+    left: 626px;
+    background-color: #2ecc71;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 28px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .overlap {
+    position: absolute;
+    width: 145px;
+    height: 45px;
+    top: 898px;
+    left: 268px;
+    background-color: #e67e22;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-2 {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .rectangle {
+    width: 149px;
+    height: 45px;
+    top: 286px;
+    left: 268px;
+    background-color: #e9e9e9;
+    position: absolute;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .overlap-2 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 449px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-3 {
+    position: absolute;
+    width: 72px;
+    top: 13px;
+    left: 13px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .expand-arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 15px;
+    left: 464px;
+  }
+  
+  .cadastro-de-eventos .overlap-3 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 522px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .vector {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 13px;
+    left: 9px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-4 {
+    position: absolute;
+    top: 14px;
+    left: 35px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .overlap-4 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 681px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-5 {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .img {
+    top: 12px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 464px;
+  }
+  
+  .cadastro-de-eventos .overlap-5 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 756px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .expand-arrow-2 {
+    top: 14px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 464px;
+  }
+  
+  .cadastro-de-eventos .overlap-6 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 831px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .expand-arrow-3 {
+    top: 11px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 464px;
+  }
+  
+  .cadastro-de-eventos .div-wrapper {
+    position: absolute;
+    width: 503px;
+    height: 145px;
+    top: 693px;
+    left: 853px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-6 {
+    position: absolute;
+    top: 15px;
+    left: 13px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .rectangle-2 {
+    width: 156px;
+    height: 45px;
+    top: 370px;
+    left: 272px;
+    background-color: #e9e9e9;
+    position: absolute;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-7 {
+    position: absolute;
+    top: 263px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-8 {
+    position: absolute;
+    top: 426px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-9 {
+    position: absolute;
+    top: 655px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-10 {
+    position: absolute;
+    top: 731px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-11 {
+    position: absolute;
+    top: 807px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-12 {
+    position: absolute;
+    top: 668px;
+    left: 857px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-13 {
+    position: absolute;
+    top: 347px;
+    left: 273px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .overlap-7 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 607px;
+    left: 268px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .expand-arrow-4 {
+    top: 13px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 464px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-14 {
+    position: absolute;
+    top: 581px;
+    left: 272px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .overlap-8 {
+    position: absolute;
+    width: 428px;
+    height: 77px;
+    top: 84px;
+    left: 268px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-15 {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    font-family: "Poppins", Helvetica;
+    font-weight: 600;
+    color: #e67e22;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-16 {
+    position: absolute;
+    top: 17px;
+    left: 0;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .rectangle-3 {
+    width: 156px;
+    height: 45px;
+    top: 370px;
+    left: 608px;
+    background-color: #e9e9e9;
+    position: absolute;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-17 {
+    position: absolute;
+    top: 347px;
+    left: 609px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .overlap-9 {
+    position: absolute;
+    width: 327px;
+    height: 343px;
+    top: 309px;
+    left: 943px;
+  }
+  
+  .cadastro-de-eventos .rectangle-4 {
+    width: 293px;
+    height: 289px;
+    top: 0;
+    left: 17px;
+    background-color: #d9d9d9;
+    position: absolute;
+    border-radius: 5px;
+  }
+  
+  .cadastro-de-eventos .mdi-user {
+    position: absolute;
+    width: 327px;
+    height: 327px;
+    top: 16px;
+    left: 0;
+  }
+  
+  .cadastro-de-eventos .overlap-10 {
+    position: absolute;
+    width: 119px;
+    height: 29px;
+    top: 275px;
+    left: 988px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-18 {
+    position: absolute;
+    width: 109px;
+    height: 29px;
+    top: 0;
+    left: 0;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .cadastro-de-eventos .heroicons-solid {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 8px;
+    left: 101px;
+  }
+  
+  .cadastro-de-eventos .overlap-11 {
+    position: absolute;
+    width: 56px;
+    height: 18px;
+    top: 283px;
+    left: 1108px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-19 {
+    position: absolute;
+    width: 42px;
+    height: 6px;
+    top: 5px;
+    left: 0;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .fluent-emoji-sad {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: 38px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-20 {
+    position: absolute;
+    width: 66px;
+    height: 6px;
+    top: 288px;
+    left: 1164px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .plus-math {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 617px;
+    left: 773px;
+  }
+  
+  .cadastro-de-eventos .plus-math-2 {
+    top: 693px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 773px;
+  }
+  
+  .cadastro-de-eventos .plus-math-3 {
+    top: 767px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 773px;
+  }
+  
+  .cadastro-de-eventos .plus-math-4 {
+    top: 844px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 773px;
+  }
+  
+  .cadastro-de-eventos .vector-2 {
+    top: 784px;
+    left: 78px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .cadastro-de-eventos .group {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 217px;
+    left: 76px;
+    background-image: url(https://c.animaapp.com/mb7u88iye7xe8U/img/group.png);
+    background-size: 100% 100%;
+  }
+  
+  .cadastro-de-eventos .vector-3 {
+    top: 425px;
+    left: 76px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-21 {
+    position: absolute;
+    top: 357px;
+    left: 64px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-22 {
+    position: absolute;
+    top: 256px;
+    left: 70px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-23 {
+    position: absolute;
+    top: 469px;
+    left: 64px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-24 {
+    position: absolute;
+    top: 575px;
+    left: 47px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-25 {
+    position: absolute;
+    top: 837px;
+    left: 74px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .overlap-12 {
+    position: absolute;
+    width: 24px;
+    height: 583px;
+    top: 101px;
+    left: 190px;
+  }
+  
+  .cadastro-de-eventos .line {
+    width: 1px;
+    height: 560px;
+    top: 0;
+    left: 12px;
+    position: absolute;
+    object-fit: cover;
+  }
+  
+  .cadastro-de-eventos .ellipse {
+    top: 559px;
+    left: 0;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .cadastro-de-eventos .ellipse-2 {
+    top: 77px;
+    left: 190px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .cadastro-de-eventos .ellipse-3 {
+    top: 900px;
+    left: 190px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .cadastro-de-eventos .line-2 {
+    width: 2px;
+    height: 216px;
+    top: 684px;
+    left: 202px;
+    position: absolute;
+    object-fit: cover;
+  }
+  
+  .cadastro-de-eventos .davinci-resolve {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    top: 93px;
+    left: 65px;
+  }
+  
+  .cadastro-de-eventos .siren {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 312px;
+    left: 76px;
+  }
+  
+  .cadastro-de-eventos .case-study {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 535px;
+    left: 73px;
+  }
+  
+  .cadastro-de-eventos .text-wrapper-26 {
+    position: absolute;
+    top: 693px;
+    left: 68px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .cadastro-de-eventos .vector-4 {
+    top: 641px;
+    left: 75px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .cadastro-de-eventos .overlap-13 {
+    position: absolute;
+    width: 499px;
+    height: 40px;
+    top: 188px;
+    left: 273px;
+    background-color: #ecebeb;
+  }
+  
+  .cadastro-de-eventos .plus {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 8px;
+    left: 15px;
+  }
+  
+  .cadastro-de-eventos .document {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 9px;
+    left: 66px;
+  }
+  
+  .cadastro-de-eventos .delete {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 9px;
+    left: 407px;
+  }
+  
+  .cadastro-de-eventos .edit-file {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 9px;
+    left: 120px;
+  }
+  
+  .cadastro-de-eventos .refresh {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 10px;
+    left: 460px;
+  }
+  
