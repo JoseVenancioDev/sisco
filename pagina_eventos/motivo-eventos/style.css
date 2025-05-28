@@ -1,0 +1,482 @@
+.motivos-dos-eventos {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .motivos-dos-eventos .div {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+  }
+  
+  .motivos-dos-eventos .overlap {
+    position: absolute;
+    width: 145px;
+    height: 45px;
+    top: 772px;
+    left: 612px;
+    background-color: #2ecc71;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 28px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .overlap-group {
+    position: absolute;
+    width: 145px;
+    height: 45px;
+    top: 772px;
+    left: 254px;
+    background-color: #e67e22;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-2 {
+    position: absolute;
+    top: 10px;
+    left: 31px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .rectangle {
+    position: absolute;
+    width: 149px;
+    height: 45px;
+    top: 330px;
+    left: 254px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .expand-arrow-wrapper {
+    position: absolute;
+    width: 149px;
+    height: 45px;
+    top: 340px;
+    left: 608px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .expand-arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 11px;
+    left: 112px;
+  }
+  
+  .motivos-dos-eventos .overlap-2 {
+    position: absolute;
+    width: 503px;
+    height: 45px;
+    top: 432px;
+    left: 254px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 13px;
+    left: 466px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-3 {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .div-wrapper {
+    position: absolute;
+    width: 503px;
+    height: 219px;
+    top: 524px;
+    left: 254px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-4 {
+    position: absolute;
+    top: 15px;
+    left: 13px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-5 {
+    position: absolute;
+    top: 307px;
+    left: 258px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-6 {
+    position: absolute;
+    top: 317px;
+    left: 612px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-7 {
+    position: absolute;
+    top: 409px;
+    left: 258px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .overlap-3 {
+    position: absolute;
+    width: 85px;
+    height: 21px;
+    top: 499px;
+    left: 258px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-8 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .overlap-4 {
+    position: absolute;
+    width: 312px;
+    height: 77px;
+    top: 75px;
+    left: 254px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-9 {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    font-family: "Poppins", Helvetica;
+    font-weight: 600;
+    color: #e67e22;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-10 {
+    position: absolute;
+    top: 17px;
+    left: 0;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .motivos-dos-eventos .novelist-writing {
+    position: absolute;
+    width: 568px;
+    height: 568px;
+    top: 269px;
+    left: 831px;
+    object-fit: cover;
+  }
+  
+  .motivos-dos-eventos .vector {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 760px;
+    left: 91px;
+  }
+  
+  .motivos-dos-eventos .group {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 193px;
+    left: 89px;
+    background-image: url(https://c.animaapp.com/mb7tyvl6BoiKhr/img/group.png);
+    background-size: 100% 100%;
+  }
+  
+  .motivos-dos-eventos .vector-2 {
+    top: 401px;
+    left: 89px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-11 {
+    position: absolute;
+    top: 333px;
+    left: 77px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-12 {
+    position: absolute;
+    top: 232px;
+    left: 83px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-13 {
+    position: absolute;
+    top: 445px;
+    left: 77px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-14 {
+    position: absolute;
+    top: 551px;
+    left: 60px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-15 {
+    position: absolute;
+    top: 813px;
+    left: 87px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .overlap-5 {
+    position: absolute;
+    width: 24px;
+    height: 583px;
+    top: 77px;
+    left: 203px;
+  }
+  
+  .motivos-dos-eventos .line {
+    width: 1px;
+    height: 560px;
+    top: 0;
+    left: 15px;
+    position: absolute;
+    object-fit: cover;
+  }
+  
+  .motivos-dos-eventos .ellipse {
+    top: 559px;
+    left: 0;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .motivos-dos-eventos .ellipse-2 {
+    top: 53px;
+    left: 203px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .motivos-dos-eventos .ellipse-3 {
+    top: 876px;
+    left: 203px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  
+  .motivos-dos-eventos .line-2 {
+    width: 2px;
+    height: 216px;
+    top: 660px;
+    left: 218px;
+    position: absolute;
+    object-fit: cover;
+  }
+  
+  .motivos-dos-eventos .davinci-resolve {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    top: 69px;
+    left: 78px;
+  }
+  
+  .motivos-dos-eventos .siren {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 288px;
+    left: 89px;
+  }
+  
+  .motivos-dos-eventos .case-study {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 511px;
+    left: 86px;
+  }
+  
+  .motivos-dos-eventos .text-wrapper-16 {
+    position: absolute;
+    top: 669px;
+    left: 81px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #c5c5c5;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .motivos-dos-eventos .vector-3 {
+    top: 617px;
+    left: 88px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .motivos-dos-eventos .overlap-group-2 {
+    position: absolute;
+    width: 499px;
+    height: 40px;
+    top: 193px;
+    left: 258px;
+    background-color: #ecebeb;
+  }
+  
+  .motivos-dos-eventos .plus {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    top: 8px;
+    left: 15px;
+  }
+  
+  .motivos-dos-eventos .document {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 9px;
+    left: 66px;
+  }
+  
+  .motivos-dos-eventos .delete {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 9px;
+    left: 407px;
+  }
+  
+  .motivos-dos-eventos .edit-file {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 9px;
+    left: 120px;
+  }
+  
+  .motivos-dos-eventos .refresh {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 10px;
+    left: 460px;
+  }
+  
