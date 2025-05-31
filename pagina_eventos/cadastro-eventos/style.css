@@ -21,6 +21,7 @@
     left: 626px;
     background-color: #2ecc71;
     border-radius: 5px;
+    border: none;
   }
   
   .cadastro-de-eventos .text-wrapper {
@@ -43,6 +44,7 @@
     left: 268px;
     background-color: #e67e22;
     border-radius: 5px;
+    border: none
   }
   
   .cadastro-de-eventos .text-wrapper-2 {
@@ -154,7 +156,7 @@
   
   .cadastro-de-eventos .img {
     top: 12px;
-    position: absolute;
+    position: relative;
     width: 20px;
     height: 20px;
     left: 464px;
@@ -727,7 +729,7 @@
   }
   
   .cadastro-de-eventos .overlap-13 {
-    position: absolute;
+    position: relative;
     width: 499px;
     height: 40px;
     top: 188px;
