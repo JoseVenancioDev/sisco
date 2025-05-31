@@ -455,4 +455,6 @@ z-index: 10; /* garantir que fica acima de elementos de fundo */
   letter-spacing: 0;
   line-height: normal;
 }
-
+details{
+  margin-bottom: 5rem;
+}
