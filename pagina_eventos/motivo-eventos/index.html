@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../globals.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>Motivo de evento</title>
+    <title>Cadastro de Motivos</title>
   </head>
   <body>
     <div class="box">
@@ -37,16 +37,13 @@
 
 <!-- Eventos -->
 
-  <div class="img">
-    <br><br>
-    <details>
-        <summary class="text-navbar">Eventos</summary>
-        <a href="">Cadastro de motivo</a>
-        <a href="">Cadastro de categoria</a>
-        <a href="">Adicionar ocorrência</a>
-        <br><br><br>
-      </details>
+<div class="img"><br><br>
+  <p class="text-navbar eventos">Eventos</p><br>
+  <div class="outros-links">
+    <a href="" class="link-motivo text-navbar">Motivo</a><br>
+    <a href="../categoria_eventos/" class="link-categoria text-navbar">Categoria</a><br>
   </div>
+</div>
 
 
 <!-- Alertas -->
@@ -110,16 +107,18 @@
           </div>
 
           <!-- Input Qtd Evento -->
-          <div class="text-wrapper-13">Qtd. evento:</div>
+          <div class="text-wrapper-13">Categoria</div>
           <div class="negocio-wrapper">
-            <input type="number" placeholder="0" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+            <select name="" id="">
+
+            </select>
             <img class="negocio" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/negocio.png" alt="Ícone" />
           </div>
 
           <!-- Input Nome do Evento -->
-          <div class="text-wrapper-11">Nome do Evento:</div>
+          <div class="text-wrapper-11">Motivo</div>
           <div class="overlap-4">
-            <input type="text" placeholder="Nome do evento" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+            <input type="text" placeholder="Insira o motivo" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
           </div>
 
           <!-- Textarea Descrição -->
