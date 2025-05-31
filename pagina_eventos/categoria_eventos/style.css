@@ -1,465 +1,458 @@
+
 .box {
-    width: 1440px;
-    height: 1024px;
-  }
-  
-  .box .categoria-eventos {
-    position: fixed;
-    width: 1472px;
-    height: 1024px;
-    top: 0;
-    left: 0;
-  }
-  
-  .box .overlap-group {
-    position: relative;
-    width: 1440px;
-    height: 1024px;
-    background-color: #ffffff;
-    border-radius: 35px;
-    box-shadow: 0px 4px 4px #00000040;
-  }
-  
-  .box .overlap {
-    position: absolute;
-    width: 501px;
-    height: 40px;
-    top: 198px;
-    left: 252px;
-    background-color: #ecebeb;
-  }
-  
-  .box .plus,
+  width: 1440px;
+  height: 1024px;
+}
+
+.box .categoria-eventos {
+  position: fixed;
+  width: 1472px;
+  height: 1024px;
+  top: 0;
+  left: 0;
+}
+
+.box .overlap-group {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background-color: #ffffff;
+  border-radius: 35px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.box .overlap {
+  position: absolute;
+  width: 501px;
+  height: 40px;
+  top: 198px;
+  left: 252px;
+  background-color: #ecebeb;
+}
+
+.box .plus,
 .box .document,
 .box .edit-file,
 .box .delete,
 .box .refresh {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: block;
-  position: absolute;
-  cursor: pointer;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+display: block;
+position: absolute;
+cursor: pointer;
 }
 
 /* Botões com background-image */
 .box .plus {
-  width: 27px;
-  height: 27px;
-  top: 8px;
-  left: 15px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/plus.png');
+width: 27px;
+height: 27px;
+top: 8px;
+left: 15px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/plus.png');
 }
 
 .box .document {
-  width: 23px;
-  height: 23px;
-  top: 9px;
-  left: 66px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/document.png');
+width: 23px;
+height: 23px;
+top: 9px;
+left: 66px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/document.png');
 }
 
 .box .edit-file {
-  width: 23px;
-  height: 23px;
-  top: 9px;
-  left: 120px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/edit-file.png');
+width: 23px;
+height: 23px;
+top: 9px;
+left: 120px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/edit-file.png');
 }
 
 .box .delete {
-  width: 25px;
-  height: 25px;
-  top: 9px;
-  left: 407px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/delete.png');
+width: 25px;
+height: 25px;
+top: 9px;
+left: 407px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/delete.png');
 }
 
 .box .refresh {
-  width: 24px;
-  height: 24px;
-  top: 10px;
-  left: 460px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/refresh.png');
+width: 24px;
+height: 24px;
+top: 10px;
+left: 460px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/refresh.png');
 }
 
-  
+.box .plus:hover,
+.box .document:hover,
+.box .edit-file:hover,
+.box .delete:hover,
+.box .refresh:hover,
+.box .vector:hover,
+.box .img:hover,
+.box .group:hover,
+.box .siren:hover,
+.box .case-study:hover,
+.box .vector-2:hover {
+  transform: scale(1.1); /* Aumenta o tamanho da imagem */}
+
 .box .vector,
 .box .img,
 .box .group {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: block;
-  position: absolute;
-  cursor: pointer;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+display: block;
+position: absolute;
+cursor: pointer;
 }
 
 /* Ícone vector */
 .box .vector {
-  width: 30px;
-  height: 30px;
-  top: 765px;
-  left: 81px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/vector.svg');
+width: 30px;
+height: 30px;
+top: 765px;
+left: 81px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/vector.svg');
 }
 
 /* Ícone group */
 .box .group {
-  width: 30px;
-  height: 30px;
-  top: 198px;
-  left: 79px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/group.png');
+width: 30px;
+height: 30px;
+top: 198px;
+left: 79px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/group.png');
 }
 
 /* Ícone vector-2 */
 .box .img {
+width: 30px;
+height: 30px;
+top: 406px;
+left: 79px;
+background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/vector-2.svg');
+}
+
+
+.box .text-navbar,
+.box .vector,
+.box .siren,
+.box .case-study,
+.box .vector-2
+ {
+position: absolute; /* já tinha */
+display: inline-block; /* para o link cobrir texto e ser clicável */
+cursor: pointer;
+color: #c5c5c5; /* manter cor */
+font-family: "Inter", Helvetica;
+font-weight: 600;
+font-size: 16px;
+white-space: nowrap;
+/* largura e altura já controlada pela posição e texto, mas pode ajustar padding para ampliar área */
+
+z-index: 10; /* garantir que fica acima de elementos de fundo */
+}
+
+
+
+
+.box .overlap-2 {
+  position: absolute;
+  width: 24px;
+  height: 583px;
+  top: 82px;
+  left: 193px;
+}
+
+.box .line {
+  width: 1px;
+  height: 560px;
+  top: 0;
+  left: 12px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.box .ellipse {
+  top: 559px;
+  left: 0;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #e67e22;
+  border-radius: 12px;
+  opacity: 0.55;
+}
+
+.box .ellipse-2 {
+  top: 58px;
+  left: 193px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #e67e22;
+  border-radius: 12px;
+  opacity: 0.55;
+}
+
+.box .ellipse-3 {
+  top: 881px;
+  left: 193px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #e67e22;
+  border-radius: 12px;
+  opacity: 0.55;
+}
+
+.box .line-2 {
+  width: 2px;
+  height: 216px;
+  top: 665px;
+  left: 205px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.box .davinci-resolve {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 74px;
+  left: 68px;
+}
+
+.box .siren {
+  position: absolute;
   width: 30px;
   height: 30px;
-  top: 406px;
+  top: 293px;
   left: 79px;
-  background-image: url('https://c.animaapp.com/mb7tqg4jpC7yeV/img/vector-2.svg');
 }
 
-  
-.box a.text-wrapper,
-.box a.div,
-.box a.text-wrapper-2,
-.box a.text-wrapper-3,
-.box a.text-wrapper-4 {
-  position: absolute; /* já tinha */
-  display: inline-block; /* para o link cobrir texto e ser clicável */
-  cursor: pointer;
-  color: #c5c5c5; /* manter cor */
+.box .case-study {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 516px;
+  left: 76px;
+}
+
+.box .vector-2 {
+  top: 622px;
+  left: 78px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+.box .div-wrapper {
+  position: absolute;
+  width: 145px;
+  height: 45px;
+  top: 776px;
+  left: 608px;
+  background-color: #2ecc71;
+  border-radius: 5px;
+}
+
+.box .text-wrapper-6 {
+  position: absolute;
+  top: 11px;
+  left: 28px;
   font-family: "Inter", Helvetica;
   font-weight: 600;
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .college-students {
+  position: absolute;
+  width: 546px;
+  height: 546px;
+  top: 259px;
+  left: 832px;
+  object-fit: cover;
+}
+
+.box .overlap-3 {
+  position: absolute;
+  width: 145px;
+  height: 45px;
+  top: 776px;
+  left: 252px;
+  background-color: #e67e22;
+  border-radius: 5px;
+}
+
+.box .text-wrapper-7 {
+  position: absolute;
+  top: 11px;
+  left: 30px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .rectangle {
+  position: absolute;
+  width: 149px;
+  height: 45px;
+  top: 321px;
+  left: 250px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+.box .overlap-4 {
+  position: absolute;
+  width: 503px;
+  height: 45px;
+  top: 423px;
+  left: 250px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+.box .text-wrapper-8 {
+  position: absolute;
+  top: 14px;
+  left: 13px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #aaaaaa;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
   white-space: nowrap;
-  /* largura e altura já controlada pela posição e texto, mas pode ajustar padding para ampliar área */
-  padding: 4px 8px;
-  z-index: 10; /* garantir que fica acima de elementos de fundo */
 }
 
-/* Opcional: se quiser que o link mude cor quando passar o mouse */
-.box a.text-wrapper:hover,
-.box a.div:hover,
-.box a.text-wrapper-2:hover,
-.box a.text-wrapper-3:hover,
-.box a.text-wrapper-4:hover {
-  color: #e67e22; /* exemplo: cor laranja */
-  text-decoration: underline;
+.box .overlap-5 {
+  position: absolute;
+  width: 503px;
+  height: 219px;
+  top: 515px;
+  left: 250px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
 }
 
-  
-  .box .overlap-2 {
-    position: absolute;
-    width: 24px;
-    height: 583px;
-    top: 82px;
-    left: 193px;
-  }
-  
-  .box .line {
-    width: 1px;
-    height: 560px;
-    top: 0;
-    left: 12px;
-    position: absolute;
-    object-fit: cover;
-  }
-  
-  .box .ellipse {
-    top: 559px;
-    left: 0;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: #e67e22;
-    border-radius: 12px;
-    opacity: 0.55;
-  }
-  
-  .box .ellipse-2 {
-    top: 58px;
-    left: 193px;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: #e67e22;
-    border-radius: 12px;
-    opacity: 0.55;
-  }
-  
-  .box .ellipse-3 {
-    top: 881px;
-    left: 193px;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: #e67e22;
-    border-radius: 12px;
-    opacity: 0.55;
-  }
-  
-  .box .line-2 {
-    width: 2px;
-    height: 216px;
-    top: 665px;
-    left: 205px;
-    position: absolute;
-    object-fit: cover;
-  }
-  
-  .box .davinci-resolve {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    top: 74px;
-    left: 68px;
-  }
-  
-  .box .siren {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 293px;
-    left: 79px;
-  }
-  
-  .box .case-study {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 516px;
-    left: 76px;
-  }
-  
-  .box .text-wrapper-5 {
-    position: absolute;
-    top: 675px;
-    left: 71px;
-    font-family: "Inter", Helvetica;
-    font-weight: 600;
-    color: #c5c5c5;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .box .vector-2 {
-    top: 622px;
-    left: 78px;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .box .div-wrapper {
-    position: absolute;
-    width: 145px;
-    height: 45px;
-    top: 776px;
-    left: 608px;
-    background-color: #2ecc71;
-    border-radius: 5px;
-  }
-  
-  .box .text-wrapper-6 {
-    position: absolute;
-    top: 11px;
-    left: 28px;
-    font-family: "Inter", Helvetica;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .college-students {
-    position: absolute;
-    width: 546px;
-    height: 546px;
-    top: 259px;
-    left: 832px;
-    object-fit: cover;
-  }
-  
-  .box .overlap-3 {
-    position: absolute;
-    width: 145px;
-    height: 45px;
-    top: 776px;
-    left: 252px;
-    background-color: #e67e22;
-    border-radius: 5px;
-  }
-  
-  .box .text-wrapper-7 {
-    position: absolute;
-    top: 11px;
-    left: 30px;
-    font-family: "Inter", Helvetica;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .rectangle {
-    position: absolute;
-    width: 149px;
-    height: 45px;
-    top: 321px;
-    left: 250px;
-    background-color: #e9e9e9;
-    border-radius: 5px;
-  }
-  
-  .box .overlap-4 {
-    position: absolute;
-    width: 503px;
-    height: 45px;
-    top: 423px;
-    left: 250px;
-    background-color: #e9e9e9;
-    border-radius: 5px;
-  }
-  
-  .box .text-wrapper-8 {
-    position: absolute;
-    top: 14px;
-    left: 13px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #aaaaaa;
-    font-size: 15px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .box .overlap-5 {
-    position: absolute;
-    width: 503px;
-    height: 219px;
-    top: 515px;
-    left: 250px;
-    background-color: #e9e9e9;
-    border-radius: 5px;
-  }
-  
-  .box .text-wrapper-9 {
-    position: absolute;
-    top: 16px;
-    left: 13px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #aaaaaa;
-    font-size: 15px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .box .negocio-wrapper {
-    position: absolute;
-    width: 156px;
-    height: 45px;
-    top: 321px;
-    left: 597px;
-    background-color: #e9e9e9;
-    border-radius: 5px;
-  }
-  
-  .box .negocio {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 13px;
-    left: 127px;
-  }
-  
-  .box .text-wrapper-10 {
-    position: absolute;
-    top: 299px;
-    left: 254px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 17px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .text-wrapper-11 {
-    position: absolute;
-    top: 401px;
-    left: 254px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 17px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .text-wrapper-12 {
-    position: absolute;
-    top: 491px;
-    left: 254px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 17px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .text-wrapper-13 {
-    position: absolute;
-    top: 299px;
-    left: 598px;
-    font-family: "Inter", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 17px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .overlap-6 {
-    position: absolute;
-    width: 378px;
-    height: 77px;
-    top: 67px;
-    left: 250px;
-  }
-  
-  .box .text-wrapper-14 {
-    position: absolute;
-    top: 0;
-    left: 2px;
-    font-family: "Poppins", Helvetica;
-    font-weight: 600;
-    color: #e67e22;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .box .text-wrapper-15 {
-    position: absolute;
-    top: 17px;
-    left: 0;
-    font-family: "Poppins", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 40px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
+.box .text-wrapper-9 {
+  position: absolute;
+  top: 16px;
+  left: 13px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #aaaaaa;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.box .negocio-wrapper {
+  position: absolute;
+  width: 156px;
+  height: 45px;
+  top: 321px;
+  left: 597px;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+.box .negocio {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 13px;
+  left: 127px;
+}
+
+.box .text-wrapper-10 {
+  position: absolute;
+  top: 299px;
+  left: 254px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .text-wrapper-11 {
+  position: absolute;
+  top: 401px;
+  left: 254px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .text-wrapper-12 {
+  position: absolute;
+  top: 491px;
+  left: 254px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .text-wrapper-13 {
+  position: absolute;
+  top: 299px;
+  left: 598px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .overlap-6 {
+  position: absolute;
+  width: 378px;
+  height: 77px;
+  top: 67px;
+  left: 250px;
+}
+
+.box .text-wrapper-14 {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  color: #e67e22;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.box .text-wrapper-15 {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
