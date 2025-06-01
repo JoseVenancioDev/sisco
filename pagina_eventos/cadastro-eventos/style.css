@@ -776,4 +776,35 @@
     top: 10px;
     left: 460px;
   }
+  .link-motivo {
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+    color: #c5c5c5;
+    font-family: "Inter", Helvetica;
+  }
   
+  .link-motivo:hover {
+    font-size: 20px;
+  }
+  
+  .link-categoria {
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+    color: #c5c5c5;
+    font-family: "Inter", Helvetica;
+  }
+  
+  .link-categoria:hover {
+    font-size: 22px;
+  }
+  .text-navbar{
+    position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  color: #c5c5c5;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  z-index: 10;
+  }

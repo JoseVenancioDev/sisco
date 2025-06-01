@@ -357,16 +357,6 @@
   font-size: 40px;
 }
 
-/* Espaçamento para <details> */
-details {
-  details {
-    margin-bottom: 5rem;
-    position: relative;
-    z-index: 20; /* aumenta a prioridade */
-    background-color: #fff; /* evita transparência que deixa passar a imagem */
-  }
-  
-}
 
 .link-motivo {
   font-size: 16px;
