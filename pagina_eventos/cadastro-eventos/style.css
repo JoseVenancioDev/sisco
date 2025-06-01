@@ -729,7 +729,7 @@
   }
   
   .cadastro-de-eventos .overlap-13 {
-    position: relative;
+    position: absolute;
     width: 499px;
     height: 40px;
     top: 188px;
