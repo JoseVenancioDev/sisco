@@ -159,9 +159,21 @@
         <img class="case-study" src="https://c.animaapp.com/mb7u88iye7xe8U/img/case-study.png" />
         <img class="vector-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector-1.svg" />
         <div class="overlap-13">
-            <img class="plus" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus.png" title="Adicionar" />
-            <img class="document" src="https://c.animaapp.com/mb7u88iye7xe8U/img/document.png" title="Visualizar" />
-            <img class="delete" src="https://c.animaapp.com/mb7u88iye7xe8U/img/delete.png" title="Excluir" />
-            <img class="edit-file" src="https://c.animaapp.com/mb7u88iye7xe8U/img/edit-file.png" title="Editar" />
-            <img class="refresh" src="https://c.animaapp.com/mb7u88iye7xe8U/img/refresh.png" title="Atualizar" />
-  </div>
+           <form action="../crud/create.php" method="POST">
+    <button type="submit" >
+      <img class="plus" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus.png" title="Adicionar" />
+    </button>
+  </form>  
+   <a href="../crud/index.php?id">
+    <img class="document" src="https://c.animaapp.com/mb7u88iye7xe8U/img/document.png" title="Visualizar" />
+  </a>
+
+             <a href="../crud/delete.php?id" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+    <img class="delete" src="https://c.animaapp.com/mb7u88iye7xe8U/img/delete.png" title="Excluir" />
+  </a>
+              <a href="../crud/update_form.php?id">
+    <img class="edit-file" src="https://c.animaapp.com/mb7u88iye7xe8U/img/edit-file.png" title="Editar" />
+  </a>
+              <a href="index.html">
+    <img class="refresh" src="https://c.animaapp.com/mb7u88iye7xe8U/img/refresh.png" title="Atualizar" />
+  </a>
