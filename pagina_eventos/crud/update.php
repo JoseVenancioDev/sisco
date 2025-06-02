@@ -11,7 +11,7 @@ $data = $_POST['evento_data'];
 $hora = $_POST['evento_hora'];
 $cursista = $_POST['cursista_matricula'];
 
-$sql = "UPDATE tb_evento SET 
+$sql = "UPDATE tb_sisco_evento SET 
         evento_idColaborador='$colaborador',
         evento_idResponsavel='$responsavel',
         evento_idCategoria='$categoria',
