@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-$result = $conn->query("SELECT * FROM tb_evento");
+$result = $conn->query("SELECT * FROM tb_sisco_evento");
 ?>
 
 <div class="table-container">
@@ -15,13 +15,13 @@ $result = $conn->query("SELECT * FROM tb_evento");
         <th>Data</th>
         <th>Hora</th>
         <th>Observação</th>
-        <th>Cursista</th>
+        <th>Discente</th>
       </tr>
     </thead>
     <tbody>
       <?php while ($row = $result->fetch_assoc()): ?>
       <tr>
-        <td><?= $row['id'] ?></td>
+        <td><?= $row['evento_id'] ?></td>
         <td><?= $row['evento_idColaborador'] ?></td>
         <td><?= $row['evento_idResponsavel'] ?></td>
         <td><?= $row['evento_idCategoria'] ?></td>
@@ -29,9 +29,9 @@ $result = $conn->query("SELECT * FROM tb_evento");
         <td><?= $row['evento_data'] ?></td>
         <td><?= $row['evento_hora'] ?></td>
         <td><?= $row['evento_observacao'] ?></td>
-        <td><?= $row['cursista_matricula'] ?></td>
+        <td><?= $row['evento_idDiscente'] ?></td>
         <td>
-          <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Deseja excluir?')">🗑️</a>
+          <a href="delete.php?evento_id=<?= $row['evento_id'] ?>" onclick="return confirm('Deseja excluir?')">🗑️</a>
         </td>
       </tr>
       <?php endwhile; ?>
