@@ -6,6 +6,37 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
     <style>
+
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 999;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none;
+}
+
   .overlap-13 {
     display: flex;
     align-items: center;
@@ -52,6 +83,52 @@
   }
 </style>
   </head>
+  <script>
+function toggleDropdown(id) {
+  const dropdown = document.getElementById(id);
+  dropdown.classList.toggle('hidden');
+}
+
+function selectOption(inputId, value) {
+  const input = document.getElementById(inputId);
+  input.value = value;
+  toggleDropdown(inputId + 'Dropdown');
+}
+ document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('colaboradorDropdown');
+    const input = document.getElementById('colaboradorInput');
+
+    if (!dropdown.contains(event.target) && event.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+  function selectColaborador(matricula, nome) {
+  document.getElementById('colaboradorInput').value = nome;       // mostra o nome
+  document.getElementById('colaboradorHidden').value = matricula; // envia a matrícula
+  toggleDropdown('colaboradorDropdown');
+}
+function selectCategoria(inputId, id, nome) {
+  document.getElementById(inputId).value = nome;
+  document.getElementById('categoriaHiddenInput').value = id;
+  toggleDropdown('categoriaDropdown');
+}
+function selectMotivo(inputId, id, nome) {
+  document.getElementById(inputId).value = nome;
+  document.getElementById('motivoHiddenInput').value = id;
+  toggleDropdown('motivoDropdown');
+}
+function selectDiscente(inputId, matricula, nome) {
+  document.getElementById(inputId).value = nome;
+  document.getElementById('discenteHiddenInput').value = matricula;
+  toggleDropdown('discenteDropdown');
+}
+function selectResponsavel(inputId, id, nome) {
+  document.getElementById(inputId).value = nome;
+  document.getElementById('responsavelHiddenInput').value = id;
+  toggleDropdown('responsavelDropdown');
+}
+</script>
+
   <body>
     <div class="cadastro-de-eventos">
       <div class="div">
@@ -62,29 +139,75 @@
           <input type="number" min="0" name="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="overlap-2">
-          
-          <input type="text" name="evento_idColaborador" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          <img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
-        </div>
+       <div class="dropdown-container">
+  <div class="dropdown-container">
+  <!-- Campo visível ao usuário -->
+  <input type="text" id="colaboradorInput" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" readonly onclick="toggleDropdown('colaboradorDropdown')" />
+
+  <!-- Campo oculto que envia a matrícula -->
+  <input type="hidden" id="colaboradorHidden" name="evento_idColaborador" />
+
+  <img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('colaboradorDropdown')" />
+
+  <!-- Lista de opções -->
+  <ul id="colaboradorDropdown" class="dropdown hidden">
+    <li onclick="selectColaborador('4786271X', 'WERBSON FALCAO DE LIMA')">WERBSON FALCAO DE LIMA</li>
+    <li onclick="selectColaborador('01952', 'Raphael Sanzio de Carvalho Silva')">Raphael Sanzio de Carvalho Silva</li>
+    <li onclick="selectColaborador('9788191X', 'MARIO FAGNER LOUREIRO DA ROCHA')">MARIO FAGNER LOUREIRO DA ROCHA</li>
+    <li onclick="selectColaborador('81054258', 'Adriano Jose Sousa dos Anjos')">Adriano Jose Sousa dos Anjos</li>
+    <li onclick="selectColaborador('16849219', 'ROSELENA FERNANDES SILVA')">ROSELENA FERNANDES SILVA</li>
+  </ul>
+</div>
+
+</div>
+</div>
+
         <div class="overlap-3">
-          <img class="vector" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector.svg" />
-          <input type="text" placeholder="Buscar:" style="all: unset; padding-left: 30px; width: 100%; height: 100%;" />
+          <input type="text" id="discenteInput" name="evento_idDiscente_visual" placeholder="Selecione um discente" readonly onclick="toggleDropdown('discenteDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  <img class="vector" src="" onclick="toggleDropdown('discenteDropdown')" />
+  <ul id="discenteDropdown" class="dropdown hidden">
+    <li onclick="selectDiscente('discenteInput', '1587238', 'SAMYA EVELYN DE LIMA SILVA')">SAMYA EVELYN DE LIMA SILVA</li>
+    <li onclick="selectDiscente('discenteInput', '1686320', 'BIANCA SOUSA DOS SANTOS')">BIANCA SOUSA DOS SANTOS</li>
+    <li onclick="selectDiscente('discenteInput', '1687262', 'RAFAEL SANTOS SILVA')">RAFAEL SANTOS SILVA</li>
+  </ul>
+  <input type="hidden" name="evento_idDiscente" id="discenteHiddenInput" />
         </div>
         <div class="overlap-4">
-          <input type="text" name="evento_idResponsavel" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
+       <input type="text" id="responsavelInput" name="evento_idResponsavel_visual" placeholder="Selecione um Responsável" readonly onclick="toggleDropdown('responsavelDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+          <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('responsavelDropdown')" />
+  <ul id="responsavelDropdown" class="dropdown hidden">
+    <li onclick="selectResponsavel('responsavelInput', '1', 'FRANCISCO ANTONIO DE FREITAS DO NASCIMENTO')">FRANCISCO ANTONIO DE FREITAS DO NASCIMENTO</li>
+    <li onclick="selectResponsavel('responsavelInput', '2', 'JOSE WIRATAN MARQUES')">JOSE WIRATAN MARQUES</li>
+    <li onclick="selectResponsavel('responsavelInput', '3', 'ANTONIO MACIEL DE OLIVEIRA')">ANTONIO MACIEL DE OLIVEIRA</li>
+  </ul>
+  <input type="hidden" name="evento_idResponsavel" id="responsavelHiddenInput" />
+
         </div>
-        <div class="overlap-5">
-          <input type="text" placeholder="Selecione uma categoria" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          <img class="expand-arrow-2" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
-        </div>
+       <div class="overlap-5">
+  <input type="text" id="categoriaInput" name="evento_idCategoria" placeholder="Selecione uma categoria" readonly onclick="toggleDropdown('categoriaDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  <img class="expand-arrow-2" src="seta.png" onclick="toggleDropdown('categoriaDropdown')" />
+  <ul id="categoriaDropdown" class="dropdown hidden">
+    <li onclick="selectCategoria('categoriaInput', '1', 'Impontualidade')">Impontualidade</li>
+    <li onclick="selectCategoria('categoriaInput', '2', 'Fardamento incompleto')">Fardamento incompleto</li>
+    <li onclick="selectCategoria('categoriaInput', '3', 'Acessórios inapropriados')">Acessórios inapropriados</li>
+  </ul>
+  <input type="hidden" name="evento_idCategoria" id="categoriaHiddenInput" />
+</div>
+
         <div class="overlap-6">
-          <input type="text" name="evento_idMotivo" placeholder="Selecione um motivo:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          <img class="expand-arrow-3" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
-        </div>
+  <input type="text" id="motivoInput" name="evento_idMotivo_visual" placeholder="Selecione um motivo" readonly onclick="toggleDropdown('motivoDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  <img class="expand-arrow-2" src="seta.png" onclick="toggleDropdown('motivoDropdown')" />
+  <ul id="motivoDropdown" class="dropdown hidden">
+    <li onclick="selectMotivo('motivoInput', '1', 'Transporte atrasou')">Transporte atrasou</li>
+    <li onclick="selectMotivo('motivoInput', '2', 'Ausência da blusa da farda')">Ausência da blusa da farda</li>
+    <li onclick="selectMotivo('motivoInput', '3', 'Boné, toca ou chapeú')">Boné, toca ou chapeú</li>
+  </ul>
+  <input type="hidden" name="evento_idMotivo" id="motivoHiddenInput" />
+</div>
+
         <div class="div-wrapper"><div class="text-wrapper-6">Adicionar aqui...</div></div>
         <div class="rectangle-2">
-          <input type="date" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
+          <input type="date" name="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="text-wrapper-7">ID:</div>
         <div class="text-wrapper-8">Colaborador:</div>
@@ -94,7 +217,7 @@
         <div class="text-wrapper-12">Observação:</div>
         <div class="text-wrapper-13">Data:</div>
         <div class="overlap-7">
-          <input type="text" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+          <input type="text" name="evento_idCursista" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
           <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
         </div>
         <div class="text-wrapper-14">Cursista:</div>
@@ -103,7 +226,7 @@
           <div class="text-wrapper-16">Cadastro de eventos</div>
         </div>
         <div class="rectangle-3">
-          <input type="time" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
+          <input type="time" name="evento_hora" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="text-wrapper-17">Hora:</div>
         <div class="overlap-9">
@@ -158,16 +281,17 @@
         <img class="case-study" src="https://c.animaapp.com/mb7u88iye7xe8U/img/case-study.png" />
         <img class="vector-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector-1.svg" />
         <div class="overlap-13">
-           <a href="index.html">
-    <button type="submit" >
+           <a href="index.html"> 
+           <button type="submit" ></button>
+    </form>
+      <a href="index.html">
       <img class="plus" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus.png" title="Adicionar" />
-    </button>
-  </form>  
+     </a>
    <a href="../crud/index.php">
     <img class="document" src="https://c.animaapp.com/mb7u88iye7xe8U/img/document.png" title="Visualizar" />
   </a>
 
-             <a href="../crud/delete.php" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+             <a href="index.html" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
     <img class="delete" src="https://c.animaapp.com/mb7u88iye7xe8U/img/delete.png" title="Excluir" />
   </a>
               <a href="../crud/update_form.php">
