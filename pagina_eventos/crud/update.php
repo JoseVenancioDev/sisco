@@ -9,7 +9,7 @@ $motivo = $_POST['evento_idMotivo'];
 $observacao = $_POST['evento_observacao'];
 $data = $_POST['evento_data'];
 $hora = $_POST['evento_hora'];
-$cursista = $_POST['cursista_matricula'];
+$discente = $_POST['evento_idDiscente'];
 
 $sql = "UPDATE tb_sisco_evento SET 
         evento_idColaborador='$colaborador',
@@ -19,7 +19,7 @@ $sql = "UPDATE tb_sisco_evento SET
         evento_observacao='$observacao',
         evento_data='$data',
         evento_hora='$hora',
-        cursista_matricula='$cursista'
+        evento_idDiscente='$discente'
         WHERE id=$id";
 
 $conn->query($sql);
