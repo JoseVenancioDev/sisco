@@ -127,12 +127,45 @@ function selectResponsavel(inputId, id, nome) {
   document.getElementById('responsavelHiddenInput').value = id;
   toggleDropdown('responsavelDropdown');
 }
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('formEvento').addEventListener('submit', function(event) {
+    const camposObrigatorios = [
+      { id: 'colaboradorHidden', nome: 'Colaborador' },
+      { id: 'discenteHiddenInput', nome: 'Discente' },
+      { id: 'responsavelHiddenInput', nome: 'Responsável' },
+      { id: 'categoriaHiddenInput', nome: 'Categoria do Evento' },
+      { id: 'motivoHiddenInput', nome: 'Motivo' },
+      { name: 'evento_id', nome: 'ID do Evento' },
+      { name: 'evento_data', nome: 'Data' },
+      { name: 'evento_hora', nome: 'Hora' },
+      { name: 'evento_idDiscente', nome: 'Discente' }
+    ];
+
+    let camposInvalidos = [];
+
+    camposObrigatorios.forEach(campo => {
+      const valor = campo.id
+        ? document.getElementById(campo.id)?.value
+        : document.querySelector(`[name="${campo.name}"]`)?.value;
+
+      if (!valor || valor.trim() === '') {
+        camposInvalidos.push(campo.nome);
+      }
+    });
+
+    if (camposInvalidos.length > 0) {
+      event.preventDefault();
+      alert('Por favor, preencha os seguintes campos obrigatórios:\n\n- ' + camposInvalidos.join('\n- '));
+    }
+  });
+});
+
 </script>
 
   <body>
     <div class="cadastro-de-eventos">
       <div class="div">
-       <form method="POST" action="../crud/confirm.php">
+       <form id="formEvento" method="POST" action="../crud/confirm.php">
           <button href="index.html" class="overlap-group"><div class="text-wrapper">Confirmar</div></button>
         <button class="overlap"><div class="text-wrapper-2">Cancelar</div></button>
         <div class="rectangle">
@@ -163,14 +196,8 @@ function selectResponsavel(inputId, id, nome) {
 </div>
 
         <div class="overlap-3">
-          <input type="text" id="discenteInput" name="evento_idDiscente_visual" placeholder="Selecione um discente" readonly onclick="toggleDropdown('discenteDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-  <img class="vector" src="" onclick="toggleDropdown('discenteDropdown')" />
-  <ul id="discenteDropdown" class="dropdown hidden">
-    <li onclick="selectDiscente('discenteInput', '1587238', 'SAMYA EVELYN DE LIMA SILVA')">SAMYA EVELYN DE LIMA SILVA</li>
-    <li onclick="selectDiscente('discenteInput', '1686320', 'BIANCA SOUSA DOS SANTOS')">BIANCA SOUSA DOS SANTOS</li>
-    <li onclick="selectDiscente('discenteInput', '1687262', 'RAFAEL SANTOS SILVA')">RAFAEL SANTOS SILVA</li>
-  </ul>
-  <input type="hidden" name="evento_idDiscente" id="discenteHiddenInput" />
+           <img class="vector" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector.svg" />
+          <input type="text" placeholder="Buscar:" style="all: unset; padding-left: 30px; width: 100%; height: 100%;" />
         </div>
         <div class="overlap-4">
        <input type="text" id="responsavelInput" name="evento_idResponsavel_visual" placeholder="Selecione um Responsável" readonly onclick="toggleDropdown('responsavelDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
@@ -204,9 +231,13 @@ function selectResponsavel(inputId, id, nome) {
   </ul>
   <input type="hidden" name="evento_idMotivo" id="motivoHiddenInput" />
 </div>
+<div class="div-wrapper">
+  <textarea name="evento_observacao" placeholder="Digite a observação aqui..." 
+    style="all: unset; padding: 10px; width: 100%; height: 100px; font-family: sans-serif; font-size: 14px; border: 1px; border-radius: 4px;">
+  </textarea>
+</div>
+<div class="rectangle-2">
 
-        <div class="div-wrapper"><div class="text-wrapper-6">Adicionar aqui...</div></div>
-        <div class="rectangle-2">
           <input type="date" name="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="text-wrapper-7">ID:</div>
@@ -217,8 +248,14 @@ function selectResponsavel(inputId, id, nome) {
         <div class="text-wrapper-12">Observação:</div>
         <div class="text-wrapper-13">Data:</div>
         <div class="overlap-7">
-          <input type="text" name="evento_idCursista" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
           <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
+          <input type="text" id="discenteInput" name="evento_idDiscente_visual" placeholder="Selecione um discente" readonly onclick="toggleDropdown('discenteDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  <img class="vector" src="" onclick="toggleDropdown('discenteDropdown')" />
+  <ul id="discenteDropdown" class="dropdown hidden">
+    <li onclick="selectDiscente('discenteInput', '1587238', 'SAMYA EVELYN DE LIMA SILVA')">SAMYA EVELYN DE LIMA SILVA</li>
+    <li onclick="selectDiscente('discenteInput', '1686320', 'BIANCA SOUSA DOS SANTOS')">BIANCA SOUSA DOS SANTOS</li>
+    <li onclick="selectDiscente('discenteInput', '1687262', 'RAFAEL SANTOS SILVA')">RAFAEL SANTOS SILVA</li>
+      <input type="hidden" name="evento_idDiscente" id="discenteHiddenInput" />
         </div>
         <div class="text-wrapper-14">Cursista:</div>
         <div class="overlap-8">
@@ -291,7 +328,7 @@ function selectResponsavel(inputId, id, nome) {
     <img class="document" src="https://c.animaapp.com/mb7u88iye7xe8U/img/document.png" title="Visualizar" />
   </a>
 
-             <a href="index.html" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+             <a href="../crud/delete_form.php">
     <img class="delete" src="https://c.animaapp.com/mb7u88iye7xe8U/img/delete.png" title="Excluir" />
   </a>
               <a href="../crud/update_form.php">
