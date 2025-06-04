@@ -20,8 +20,9 @@ $sql = "UPDATE tb_sisco_evento SET
         evento_data='$data',
         evento_hora='$hora',
         evento_idDiscente='$discente'
-        WHERE id=$id";
+        WHERE evento_id='$id'";
+
 
 $conn->query($sql);
-header("Location: index.php");
+header("Location: ../cadastro-eventos/index.html");
 ?>
