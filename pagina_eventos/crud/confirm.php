@@ -14,6 +14,7 @@ $discente = $_POST['evento_idDiscente'];
 
 // Prepara e executa o INSERT
 $sql = "INSERT INTO tb_sisco_evento (
+    evento_id,
     evento_idColaborador, 
     evento_idResponsavel, 
     evento_idCategoria, 
@@ -23,6 +24,7 @@ $sql = "INSERT INTO tb_sisco_evento (
     evento_hora, 
     evento_idDiscente
 ) VALUES (
+    '$id',
     '$colaborador', 
     '$responsavel', 
     '$categoria', 
