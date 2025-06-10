@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Controle de Usuários e Eventos</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- DataTables CSS com Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css"/>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS com Bootstrap -->
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- DataTables Buttons -->
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    /* Ajuste inputs SweetAlert */
+    .swal2-input, .swal2-textarea {
+      width: 100% !important;
+      padding: 6px 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    /* Container principal com largura e padding */
+    .container {
+      max-width: 1200px;
+    }
+
+    /* Espaçamento do header */
+    header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* Agrupando botões exportação alinhados à esquerda */
+    div.dt-buttons {
+      float: left;
+      margin-bottom: 10px;
+    }
+
+    /* Botão cadastrar centralizado abaixo da tabela */
+    #btn-cadastrar {
+      display: block;
+      margin: 20px auto 40px auto;
+      width: 220px;
+      font-weight: 600;
+    }
+
+    /* Melhorar espaçamento da tabela */
+    table.dataTable tbody tr td {
+      vertical-align: middle;
+    }
+
+    /* --- NOVO ESTILO PARA FORMULÁRIO EM GRADE --- */
+    .swal2-html-container {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+
+    .form-grid .form-group {
+      flex: 1 1 45%;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-grid label {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .form-grid input, .form-grid textarea {
+      font-size: 14px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px solid #ced4da;
+      resize: vertical;
+    }
+
+    .form-grid textarea {
+      min-height: 70px;
+    }
+    /* Container maior, para ocupar quase toda a largura */
+.container {
+  max-width: 95vw; /* quase toda largura da viewport */
+}
+
+/* Força a tabela a ocupar 100% */
+#minhaTabela {
+  width: 100% !important;
+  table-layout: fixed; /* para controle melhor de colunas */
+}
+
+/* Ajustar larguras mínimas das colunas */
+/* ID menor */
+#minhaTabela th:nth-child(1),
+#minhaTabela td:nth-child(1) {
+  width: 4%;
+  min-width: 40px;
+  white-space: nowrap;
+}
+
+/* Data e Hora médios */
+#minhaTabela th:nth-child(2),
+#minhaTabela td:nth-child(2),
+#minhaTabela th:nth-child(3),
+#minhaTabela td:nth-child(3) {
+  width: 7%;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+/* Responsável, Colaborador, Discente, Cursista maiores */
+#minhaTabela th:nth-child(4),
+#minhaTabela td:nth-child(4),
+#minhaTabela th:nth-child(5),
+#minhaTabela td:nth-child(5),
+#minhaTabela th:nth-child(6),
+#minhaTabela td:nth-child(6),
+#minhaTabela th:nth-child(7),
+#minhaTabela td:nth-child(7) {
+  width: 10%;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+/* Categoria, Motivo e Observação - mais largos */
+#minhaTabela th:nth-child(8),
+#minhaTabela td:nth-child(8),
+#minhaTabela th:nth-child(9),
+#minhaTabela td:nth-child(9),
+#minhaTabela th:nth-child(10),
+#minhaTabela td:nth-child(10) {
+  width: 14%;
+  min-width: 160px;
+}
+
+/* Ações menor */
+#minhaTabela th:nth-child(11),
+#minhaTabela td:nth-child(11) {
+  width: 8%;
+  min-width: 90px;
+  white-space: nowrap;
+}
+
+  </style>
+</head>
+<body class="p-4">
+
+  <div class="container">
+
+    <header>
+      <h1>Controle de Usuários e Eventos</h1>
+      <p class="lead text-muted">Gerencie os registros, edite, exclua ou cadastre novos usuários e eventos facilmente.</p>
+    </header>
+
+    <table id="minhaTabela" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Responsável</th>
+          <th>Colaborador</th>
+          <th>Discente</th>
+          <th>Cursista</th>
+          <th>Categoria do Evento</th>
+          <th>Motivo</th>
+          <th>Observação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-id="1">
+          <td>1</td>
+          <td>2025-06-04</td>
+          <td>14:30</td>
+          <td>Ana</td>
+          <td>Carlos</td>
+          <td>João</td>
+          <td>Maria</td>
+          <td>Workshop</td>
+          <td>Atualização</td>
+          <td>Sem observações</td>
+          <td>
+            <button class="btn btn-primary btn-sm btn-editar">Editar</button>
+            <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
+          </td>
+        </tr>
+        <tr data-id="2">
+          <td>2</td>
+          <td>2025-06-03</td>
+          <td>09:15</td>
+          <td>Lucas</td>
+          <td>Fernanda</td>
+          <td>Pedro</td>
+          <td>Paula</td>
+          <td>Palestra</td>
+          <td>Treinamento</td>
+          <td>Necessita certificado</td>
+          <td>
+            <button class="btn btn-primary btn-sm btn-editar">Editar</button>
+            <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button id="btn-cadastrar" class="btn btn-success">Cadastrar Usuário</button>
+  </div>
+
+<script>
+const tabela = $('#minhaTabela').DataTable({
+  ajax: {
+    url: '../crud/index.php', // PHP file that returns the data
+    dataSrc: 'data' // Matches the structure of the JSON response
+  },
+  columns: [
+    { data: 'evento_id' },
+    { data: 'evento_data' },
+    { data: 'evento_hora' },
+    { data: 'evento_idResponsavel' },
+    { data: 'evento_idColaborador' },
+    { data: 'evento_idDiscente' },
+    { data: 'evento_idCursista' },
+    { data: 'evento_idCategoria' },
+    { data: 'evento_idMotivo' },
+    { data: 'evento_observacao' },
+    {
+      data: null,
+      render: function (data, type, row) {
+        // Render buttons for each row
+        return `
+          <button class="btn btn-primary btn-sm btn-editar">Editar</button>
+          <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>
+        `;
+      }
+    }
+  ],
+  dom: "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
+       "<'row'<'col-sm-12'tr>>" +
+       "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+  buttons: [
+    {
+      extend: 'copy',
+      text: 'Copiar',
+      className: 'btn btn-primary btn-sm'
+    },
+    {
+      extend: 'csv',
+      text: 'CSV',
+      className: 'btn btn-success btn-sm'
+    },
+    {
+      extend: 'excel',
+      text: 'Excel',
+      className: 'btn btn-success btn-sm',
+      init: function(api, node, config) {
+        $(node).css('background-color', '#2F9E44'); // verde escuro
+      }
+    },
+    {
+      extend: 'pdf',
+      text: 'PDF',
+      className: 'btn btn-danger btn-sm'
+    },
+    {
+      extend: 'print',
+      text: 'Imprimir',
+      className: 'btn btn-secondary btn-sm'
+    }
+  ]
+});
+
+// Function to get the next ID
+function getNextId() {
+  const data = tabela.rows().data().toArray();
+  if (data.length === 0) {
+    return 1; // Start from 1 if no rows exist
+  }
+  const maxId = Math.max(...data.map(row => row.evento_id));
+  return maxId + 1; // Increment the highest ID
+}
+
+
+  function getNextId() {
+    const data = tabela.rows().data().toArray();
+    if (data.length === 0) return 1;
+    const ids = data.map(row => parseInt(row[0], 10));
+    return Math.max(...ids) + 1;
+  }
+
+  // Monta formulário com grade 2 colunas
+  function montarFormulario(dados = {}) {
+  const {
+    id = '',
+    data = '',
+    hora = '',
+    responsavel = '',
+    colaborador = '',
+    discente = '',
+    cursista = '',
+    categoria = '',
+    motivo = '',
+    observacao = ''
+  } = dados;
+
+  return `
+    <div class="container-fluid px-1">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="swal-id" class="form-label fw-semibold">ID</label>
+          <input id="swal-id" class="form-control" value="${id}" disabled>
+        </div>
+
+        <div class="col-md-4">
+          <label for="swal-data" class="form-label fw-semibold">Data *</label>
+          <input id="swal-data" type="date" class="form-control" value="${data}">
+        </div>
+
+        <div class="col-md-4">
+          <label for="swal-hora" class="form-label fw-semibold">Hora *</label>
+          <input id="swal-hora" type="time" class="form-control" value="${hora}">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-responsavel" class="form-label fw-semibold">Responsável *</label>
+          <input id="swal-responsavel" type="text" class="form-control" value="${responsavel}" placeholder="Nome do responsável">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-colaborador" class="form-label fw-semibold">Colaborador *</label>
+          <input id="swal-colaborador" type="text" class="form-control" value="${colaborador}" placeholder="Nome do colaborador">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-discente" class="form-label fw-semibold">Discente *</label>
+          <input id="swal-discente" type="text" class="form-control" value="${discente}" placeholder="Nome do discente">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-cursista" class="form-label fw-semibold">Cursista *</label>
+          <input id="swal-cursista" type="text" class="form-control" value="${cursista}" placeholder="Nome do cursista">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-categoria" class="form-label fw-semibold">Categoria do Evento *</label>
+          <input id="swal-categoria" type="text" class="form-control" value="${categoria}" placeholder="Categoria do evento">
+        </div>
+
+        <div class="col-md-6">
+          <label for="swal-motivo" class="form-label fw-semibold">Motivo *</label>
+          <input id="swal-motivo" type="text" class="form-control" value="${motivo}" placeholder="Motivo do evento">
+        </div>
+
+        <div class="col-12">
+          <label for="swal-observacao" class="form-label fw-semibold">Observação</label>
+          <textarea id="swal-observacao" class="form-control" placeholder="Observações adicionais" rows="3">${observacao}</textarea>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+
+  // Função para validar campos obrigatórios
+  function validarFormulario() {
+    const camposObrigatorios = [
+      '#swal-data',
+      '#swal-hora',
+      '#swal-responsavel',
+      '#swal-colaborador',
+      '#swal-discente',
+      '#swal-cursista',
+      '#swal-categoria',
+      '#swal-motivo'
+    ];
+
+    for (const seletor of camposObrigatorios) {
+      if (!$(seletor).val().trim()) {
+        Swal.showValidationMessage(`Por favor, preencha o campo obrigatório.`);
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Cadastrar novo usuário
+  $('#btn-cadastrar').click(function () {
+    Swal.fire({
+      title: 'Cadastrar Novo Usuário / Evento',
+      html: montarFormulario({id: getNextId()}),
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'Salvar',
+      cancelButtonText: 'Cancelar',
+      width: 700,
+      preConfirm: () => {
+        if (!validarFormulario()) return false;
+
+        return {
+          id: getNextId(),
+          data: $('#swal-data').val(),
+          hora: $('#swal-hora').val(),
+          responsavel: $('#swal-responsavel').val().trim(),
+          colaborador: $('#swal-colaborador').val().trim(),
+          discente: $('#swal-discente').val().trim(),
+          cursista: $('#swal-cursista').val().trim(),
+          categoria: $('#swal-categoria').val().trim(),
+          motivo: $('#swal-motivo').val().trim(),
+          observacao: $('#swal-observacao').val().trim()
+        };
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        const novo = result.value;
+        tabela.row.add([
+          novo.id,
+          novo.data,
+          novo.hora,
+          novo.responsavel,
+          novo.colaborador,
+          novo.discente,
+          novo.cursista,
+          novo.categoria,
+          novo.motivo,
+          novo.observacao,
+          `<button class="btn btn-primary btn-sm btn-editar">Editar</button> 
+           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
+        ]).draw(false);
+
+        Swal.fire('Sucesso!', 'Usuário cadastrado com sucesso.', 'success');
+      }
+    });
+  });
+
+  // Editar registro
+  $('#minhaTabela tbody').on('click', '.btn-editar', function () {
+    const linha = $(this).closest('tr');
+    const dados = tabela.row(linha).data();
+
+    const dadosObj = {
+      id: dados[0],
+      data: dados[1],
+      hora: dados[2],
+      responsavel: dados[3],
+      colaborador: dados[4],
+      discente: dados[5],
+      cursista: dados[6],
+      categoria: dados[7],
+      motivo: dados[8],
+      observacao: dados[9]
+    };
+
+    Swal.fire({
+      title: 'Editar Usuário / Evento',
+      html: montarFormulario(dadosObj),
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'Salvar',
+      cancelButtonText: 'Cancelar',
+      width: 700,
+      preConfirm: () => {
+        if (!validarFormulario()) return false;
+
+        return {
+          id: dadosObj.id,
+          data: $('#swal-data').val(),
+          hora: $('#swal-hora').val(),
+          responsavel: $('#swal-responsavel').val().trim(),
+          colaborador: $('#swal-colaborador').val().trim(),
+          discente: $('#swal-discente').val().trim(),
+          cursista: $('#swal-cursista').val().trim(),
+          categoria: $('#swal-categoria').val().trim(),
+          motivo: $('#swal-motivo').val().trim(),
+          observacao: $('#swal-observacao').val().trim()
+        };
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        const editado = result.value;
+        tabela.row(linha).data([
+          editado.id,
+          editado.data,
+          editado.hora,
+          editado.responsavel,
+          editado.colaborador,
+          editado.discente,
+          editado.cursista,
+          editado.categoria,
+          editado.motivo,
+          editado.observacao,
+          `<button class="btn btn-primary btn-sm btn-editar">Editar</button> 
+           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
+        ]).draw(false);
+
+        Swal.fire('Sucesso!', 'Usuário atualizado com sucesso.', 'success');
+      }
+    });
+  });
+
+  // Excluir registro
+  $('#minhaTabela tbody').on('click', '.btn-excluir', function () {
+    const linha = $(this).closest('tr');
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: "Este registro será excluído!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Sim, excluir!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        tabela.row(linha).remove().draw();
+        Swal.fire('Excluído!', 'O registro foi removido.', 'success');
+      }
+    });
+  });
+</script>
+</body>
+</html>
