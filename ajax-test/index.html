@@ -135,7 +135,7 @@
 #minhaTabela td:nth-child(2),
 #minhaTabela th:nth-child(3),
 #minhaTabela td:nth-child(3) {
-  width: 7%;
+  width: 8%;
   min-width: 80px;
   white-space: nowrap;
 }
@@ -172,11 +172,11 @@
   min-width: 90px;
   white-space: nowrap;
 }
-#minhaTabela tr, #minhaTabela th {
-  word-break: break-word;
-  white-space: normal; 
-  vertical-align: middle;
-}
+  #minhaTabela td, #minhaTabela th {
+    white-space: normal !important;  /* permite quebra de linha */
+    word-break: break-word;          /* quebra dentro da palavra se necessário */
+    vertical-align: middle;
+  }
 
   </style>
 </head>
@@ -189,7 +189,7 @@
       <p class="lead text-muted">Gerencie os registros, edite, exclua ou cadastre eventos facilmente.</p>
     </header>
 
-    <table id="minhaTabela" class="table table-striped table-bordered" style="width:100%">
+    <table id="minhaTabela" class="table table-striped table-bordered" style="width: 100%;">
       <thead>
         <tr>
           <th>ID</th>
@@ -255,7 +255,7 @@ const tabela = $('#minhaTabela').DataTable({
   { data: 'nome_discente' },
   { data: 'nome_colaborador' },
   { data: 'nome_responsavel' },
-  { data: 'evento_idCategoria' },
+  { data: 'nome_categoria' },
   { data: 'motivo_nome' },
   { data: 'evento_data' },
   { data: 'evento_hora' },
@@ -431,25 +431,36 @@ const tabela = $('#minhaTabela').DataTable({
     }).then((result) => {
       if (result.isConfirmed && result.value) {
         const novo = result.value;
-        tabela.row.add([
-          novo.id,
-          novo.data,
-          novo.hora,
-          novo.responsavel,
-          novo.colaborador,
-          novo.discente,
-          novo.cursista,
-          novo.categoria,
-          novo.motivo,
-          novo.observacao,
-          `<button class="btn btn-primary btn-sm btn-editar">Editar</button> 
-           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
-        ]).draw(false);
+        tabela.row.add([fetch('inserir_evento.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams(novo).toString()
+})
+.then(response => response.json())
+.then(data => {
+  if (data.status === 'ok') {
+    tabela.row.add([
+      'novo',  // ou você pode depois buscar o ID real do banco
+      novo.discente,
+      novo.colaborador,
+      novo.responsavel,
+      novo.categoria,
+      novo.motivo,
+      novo.data,
+      novo.hora,
+      novo.observacao,
+      '-', // datetime se você quiser
+      `<button class="btn btn-primary btn-sm btn-editar">Editar</button>
+       <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
+    ]).draw(false);
 
-        Swal.fire('Sucesso!', 'Usuário cadastrado com sucesso.', 'success');
-      }
-    });
-  });
+    Swal.fire('Sucesso!', 'Evento cadastrado com sucesso no banco.', 'success');
+  } else {
+    Swal.fire('Erro!', 'Não foi possível cadastrar: ' + data.mensagem, 'error');
+  }
+})]);
+
+}});
 
   // Editar registro
   $('#minhaTabela tbody').on('click', '.btn-editar', function () {
