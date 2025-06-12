@@ -319,7 +319,8 @@ const tabela = $('#minhaTabela').DataTable({
     cursista = '',
     categoria = '',
     motivo = '',
-    observacao = ''
+    observacao = '',
+    datetime = ''
   } = dados;
 
   return `
@@ -327,7 +328,7 @@ const tabela = $('#minhaTabela').DataTable({
       <div class="row g-3">
         <div class="col-md-4">
           <label for="swal-id" class="form-label fw-semibold">ID</label>
-          <input id="swal-id" class="form-control" value="${id}" disabled>
+          <input id="swal-id" class="form-control" value="${id}">
         </div>
 
         <div class="col-md-4">
@@ -356,13 +357,13 @@ const tabela = $('#minhaTabela').DataTable({
         </div>
 
         <div class="col-md-6">
-          <label for="swal-cursista" class="form-label fw-semibold">Cursista *</label>
-          <input id="swal-cursista" type="text" class="form-control" value="${cursista}" placeholder="Nome do cursista">
-        </div>
-
-        <div class="col-md-6">
           <label for="swal-categoria" class="form-label fw-semibold">Categoria do Evento *</label>
           <input id="swal-categoria" type="text" class="form-control" value="${categoria}" placeholder="Categoria do evento">
+        </div>
+
+         <div class="col-md-6">
+          <label for="swal-datetime" class="form-label fw-semibold">data e hora *</label>
+          <input id="swal-datetime" type="text" class="form-control" value="${datetime}" placeholder="Categoria do evento">
         </div>
 
         <div class="col-md-6">
@@ -388,7 +389,6 @@ const tabela = $('#minhaTabela').DataTable({
       '#swal-responsavel',
       '#swal-colaborador',
       '#swal-discente',
-      '#swal-cursista',
       '#swal-categoria',
       '#swal-motivo'
     ];
@@ -416,51 +416,59 @@ const tabela = $('#minhaTabela').DataTable({
         if (!validarFormulario()) return false;
 
         return {
-          id: $('#swal-id').val(),
-          data: $('#swal-data').val(),
-          hora: $('#swal-hora').val(),
-          responsavel: $('#swal-responsavel').val().trim(),
-          colaborador: $('#swal-colaborador').val().trim(),
-          discente: $('#swal-discente').val().trim(),
-          cursista: $('#swal-cursista').val().trim(),
-          categoria: $('#swal-categoria').val().trim(),
-          motivo: $('#swal-motivo').val().trim(),
-          observacao: $('#swal-observacao').val().trim()
+          evento_id: $('#swal-id').val(),
+          evento_idDiscente: $('#swal-discente').val().trim(),
+          evento_idColaborador: $('#swal-colaborador').val().trim(),
+          evento_idResponsavel: $('#swal-responsavel').val().trim(),
+          evento_idCategoria: $('#swal-categoria').val().trim(),
+          evento_idMotivo: $('#swal-motivo').val().trim(),
+          evento_data: $('#swal-data').val(),
+          evento_hora: $('#swal-hora').val(),
+          evento_observacao: $('#swal-observacao').val().trim(),
+          evento_dateTime: $('#swal-datetime').val().trim()
         };
       }
     }).then((result) => {
-      if (result.isConfirmed && result.value) {
-        const novo = result.value;
-        tabela.row.add([fetch('inserir_evento.php', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: new URLSearchParams(novo).toString()
-})
-.then(response => response.json())
-.then(data => {
-  if (data.status === 'ok') {
-    tabela.row.add([
-      'novo',  // ou você pode depois buscar o ID real do banco
-      novo.discente,
-      novo.colaborador,
-      novo.responsavel,
-      novo.categoria,
-      novo.motivo,
-      novo.data,
-      novo.hora,
-      novo.observacao,
-      '-', // datetime se você quiser
-      `<button class="btn btn-primary btn-sm btn-editar">Editar</button>
-       <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
-    ]).draw(false);
+  if (result.isConfirmed && result.value) {
+    const novo = result.value;
 
-    Swal.fire('Sucesso!', 'Evento cadastrado com sucesso no banco.', 'success');
-  } else {
-    Swal.fire('Erro!', 'Não foi possível cadastrar: ' + data.mensagem, 'error');
+    // Envia para o PHP
+    fetch('../pagina_eventos/crud/create.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(novo).toString()
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'ok') {
+        tabela.row.add([
+          novo.id,  // ou use o ID retornado, se desejar
+          novo.discente,
+          novo.colaborador,
+          novo.responsavel,
+          novo.categoria,
+          novo.motivo,
+          novo.data,
+          novo.hora,
+          novo.observacao,
+          novo.datetime,
+          `<button class="btn btn-primary btn-sm btn-editar">Editar</button>
+           <button class="btn btn-danger btn-sm btn-excluir">Excluir</button>`
+        ]).draw(false);
+
+        Swal.fire('Sucesso!', 'Evento cadastrado com sucesso no banco.', 'success');
+      } else {
+        Swal.fire('Erro!', 'Não foi possível cadastrar: ' + data.mensagem, 'error');
+      }
+    })
+    .catch(err => {
+      Swal.fire('Erro!', 'Erro na requisição: ' + err.message, 'error');
+    });
   }
-})]);
+});
 
-}});
+
+});
 
   // Editar registro
   $('#minhaTabela tbody').on('click', '.btn-editar', function () {
