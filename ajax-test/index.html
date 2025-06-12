@@ -328,7 +328,7 @@ const tabela = $('#minhaTabela').DataTable({
       <div class="row g-3">
         <div class="col-md-4">
           <label for="swal-id" class="form-label fw-semibold">ID</label>
-          <input id="swal-id" class="form-control" value="${id}">
+          <input id="swal-id" type="number" class="form-control" value="${id}">
         </div>
 
         <div class="col-md-4">
@@ -343,12 +343,12 @@ const tabela = $('#minhaTabela').DataTable({
 
         <div class="col-md-6">
           <label for="swal-responsavel" class="form-label fw-semibold">Responsável *</label>
-          <input id="swal-responsavel" type="text" class="form-control" value="${responsavel}" placeholder="Nome do responsável">
+          <input id="swal-responsavel" type="number" class="form-control" value="${responsavel}" placeholder="Nome do responsável">
         </div>
 
         <div class="col-md-6">
           <label for="swal-colaborador" class="form-label fw-semibold">Colaborador *</label>
-          <input id="swal-colaborador" type="text" class="form-control" value="${colaborador}" placeholder="Nome do colaborador">
+          <input id="swal-colaborador" type="number" class="form-control" value="${colaborador}" placeholder="Nome do colaborador">
         </div>
 
         <div class="col-md-6">
@@ -358,17 +358,17 @@ const tabela = $('#minhaTabela').DataTable({
 
         <div class="col-md-6">
           <label for="swal-categoria" class="form-label fw-semibold">Categoria do Evento *</label>
-          <input id="swal-categoria" type="text" class="form-control" value="${categoria}" placeholder="Categoria do evento">
+          <input id="swal-categoria" type="number" class="form-control" value="${categoria}" placeholder="Categoria do evento">
         </div>
 
          <div class="col-md-6">
           <label for="swal-datetime" class="form-label fw-semibold">data e hora *</label>
-          <input id="swal-datetime" type="text" class="form-control" value="${datetime}" placeholder="Categoria do evento">
+          <input id="swal-datetime" type="datetime" class="form-control" value="${datetime}" placeholder="Categoria do evento">
         </div>
 
         <div class="col-md-6">
           <label for="swal-motivo" class="form-label fw-semibold">Motivo *</label>
-          <input id="swal-motivo" type="text" class="form-control" value="${motivo}" placeholder="Motivo do evento">
+          <input id="swal-motivo" type="number" class="form-control" value="${motivo}" placeholder="Motivo do evento">
         </div>
 
         <div class="col-12">
@@ -418,15 +418,16 @@ const tabela = $('#minhaTabela').DataTable({
         return {
           evento_id: $('#swal-id').val(),
           evento_idDiscente: $('#swal-discente').val().trim(),
-          evento_idColaborador: $('#swal-colaborador').val().trim(),
-          evento_idResponsavel: $('#swal-responsavel').val().trim(),
+          evento_idColaborador: $('#swal-colaborador').val(),
+          evento_idResponsavel: $('#swal-responsavel').val(),
           evento_idCategoria: $('#swal-categoria').val().trim(),
-          evento_idMotivo: $('#swal-motivo').val().trim(),
+          evento_idMotivo: $('#swal-motivo').val().trim(), 
           evento_data: $('#swal-data').val(),
           evento_hora: $('#swal-hora').val(),
           evento_observacao: $('#swal-observacao').val().trim(),
-          evento_dateTime: $('#swal-datetime').val().trim()
+          evento_datetime: $('#swal-datetime').val().trim()
         };
+
       }
     }).then((result) => {
   if (result.isConfirmed && result.value) {
