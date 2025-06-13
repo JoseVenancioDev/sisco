@@ -1,37 +1,52 @@
 <?php
 include 'db.php';
 
-$colaboradores = [
-  '4786271X' => 'WERBSON FALCAO DE LIMA',
-  '01952' => 'Raphael Sanzio de Carvalho Silva',
-  '9788191X' => 'MARIO FAGNER LOUREIRO DA ROCHA',
-  '81054258' => 'Adriano Jose Sousa dos Anjos',
-  '16849219' => 'ROSELENA FERNANDES SILVA'
-];
+$colaboradores = [];
+$query = "SELECT colaborador_matricula, colaborador_nome FROM tb_jmf_colaborador ORDER BY colaborador_nome";
+$result = $conn->query($query);
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $colaboradores[$row['colaborador_matricula']] = $row['colaborador_nome'];
+  }
+}
 
-$discentes = [
-  '1587238' => 'SAMYA EVELYN DE LIMA SILVA',
-  '1686320' => 'BIANCA SOUSA DOS SANTOS',
-  '1687262' => 'RAFAEL SANTOS SILVA'
-];
+$discentes = [];
+$query = "SELECT discente_matricula, discente_nome FROM tb_jmf_discente ORDER BY discente_nome";
+$result = $conn->query($query);
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $discentes[$row['discente_matricula']] = $row['discente_nome'];
+  }
+}
+$responsaveis = [];
+$query = "SELECT responsavelLegal_id, responsavelLegal_nome FROM tb_jmf_responsavellegal ORDER BY responsavelLegal_nome";
+$result = $conn->query($query);
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $responsaveis[$row['responsavelLegal_id']] = $row['responsavelLegal_nome'];
+  }
+}
 
-$responsaveis = [
-  '1' => 'FRANCISCO ANTONIO DE FREITAS DO NASCIMENTO',
-  '2' => 'JOSE WIRATAN MARQUES',
-  '3' => 'ANTONIO MACIEL DE OLIVEIRA'
-];
+$categorias = [];
+$query = "SELECT eventoCategoria_id, eventoCategoria_nome FROM tb_sisco_eventocategoria ORDER BY eventoCategoria_nome";
+$result = $conn->query($query);
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $categorias[$row['eventoCategoria_id']] = $row['eventoCategoria_nome'];
+  }
+}
 
-$categorias = [
-  '1' => 'Impontualidade',
-  '2' => 'Fardamento incompleto',
-  '3' => 'Acessórios inapropriados'
-];
+$motivos = [];
+$query = "SELECT eventoMotivo_id, eventoMotivo_nome FROM tb_sisco_eventomotivo ORDER BY eventoMotivo_nome";
+$result = $conn->query($query);
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $motivos[$row['eventoMotivo_id']] = $row['eventoMotivo_nome'];
+  }
+}
 
-$motivos = [
-  '1' => 'Transporte atrasou',
-  '2' => 'Ausência da blusa da farda',
-  '3' => 'Boné, toca ou chapeú'
-];
+
+echo "<a href='../cadastro-eventos/index2.html' style='display: inline-block; margin: 20px 0; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;'>⬅ Voltar para Início</a>";
 
 $result = $conn->query("SELECT * FROM tb_sisco_evento");
 
@@ -45,7 +60,8 @@ echo "<table border='1'>
     <th>Motivo</th>
     <th>Data</th>
     <th>Hora</th>
-    <th>Ações</th>
+    <th>Observação</th>
+    <th>Ação</th>
   </tr>";
 
 while ($row = $result->fetch_assoc()) {
@@ -56,9 +72,9 @@ while ($row = $result->fetch_assoc()) {
   echo "<td>" . ($responsaveis[$row['evento_idResponsavel']] ?? 'Desconhecido') . "</td>";
   echo "<td>" . ($categorias[$row['evento_idCategoria']] ?? 'Desconhecido') . "</td>";
   echo "<td>" . ($motivos[$row['evento_idMotivo']] ?? 'Desconhecido') . "</td>";
-  echo "<td>" . (!empty($row['evento_observacao']) ? htmlspecialchars($row['evento_observacao']) : '-') . "</td>";
   echo "<td>" . $row['evento_data'] . "</td>";
   echo "<td>" . $row['evento_hora'] . "</td>";
+  echo "<td>" . (!empty($row['evento_observacao']) ? htmlspecialchars($row['evento_observacao']) : '-') . "</td>";
  echo "<td><a href='editar_evento.php?evento_id=" . $row['evento_id'] . "'>📝</a></td>";
   echo "</tr>";
 }

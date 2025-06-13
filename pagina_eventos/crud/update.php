@@ -24,5 +24,5 @@ $sql = "UPDATE tb_sisco_evento SET
 
 
 $conn->query($sql);
-header("Location: ../cadastro-eventos/index.html");
+header("Location: update_form.php");
 ?>

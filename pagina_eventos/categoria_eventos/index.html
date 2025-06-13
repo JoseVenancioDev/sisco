@@ -13,10 +13,18 @@
         <div class="overlap-group">
              <div class="overlap">
             <img class="plus" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/plus.png" />
+             <a href="../crud-categoria/index.php">
             <img class="document" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/document.png" />
+          </a>
+          <a href="../crud-categoria/delete_form.php">
             <img class="delete" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/delete.png" />
+          </a>
+           <a href="../crud-categoria/update_form.php">
             <img class="edit-file" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/edit-file.png" />
+          </a>
+          <a href="index.html">
             <img class="refresh" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/refresh.png" />
+          </a>
           </div>
 
           <!-- Sair -->
@@ -38,9 +46,9 @@
 <!-- Eventos -->
 
 <div class="img"><br><br>
-  <a href="../cadastro-eventos/" class="text-navbar">Eventos</a><br>
+  <a href="../cadastro-eventos/index.html" class="text-navbar">Eventos</a><br>
   <div class="outros-links">
-    <a href="../motivo-eventos/" class="link-motivo text-navbar">Motivo</a><br>
+    <a href="../motivo-eventos/index.html" class="link-motivo text-navbar">Motivo</a><br>
     <p class="text-navbar">Categoria</p>
   </div>
 </div>
@@ -86,44 +94,47 @@
           <img class="line-2" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/line-4.svg" alt="Linha" />
           <img class="davinci-resolve" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/davinci-resolve.png" alt="Logo" />
           
-          
+           <img class="college-students" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/college-students-rafiki-1.png" alt="Ilustração" />
+          <form action="../crud-categoria/confirm.php" method="POST">
+  <!-- Input ID (opcional) -->
+  <div class="text-wrapper-10">ID:</div>
+  <div class="rectangle">
+    <input type="number" name="eventoCategoria_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  </div>
 
-          <!-- Botão Confirmar -->
-          <button class="div-wrapper">
-            <div class="text-wrapper-6">Confirmar</div>
-          </button>
+  <!-- Input Nome da Categoria -->
+  <div class="text-wrapper-11">Nome do Evento:</div>
+  <div class="overlap-4">
+    <input type="text" name="eventoCategoria_nome" maxlength="50" placeholder="Nome do evento" required style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+  </div>
 
-          <img class="college-students" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/college-students-rafiki-1.png" alt="Ilustração" />
+  <!-- Textarea Descrição -->
+  <div class="text-wrapper-12">Descrição:</div>
+  <div class="overlap-5">
+    <textarea name="eventoCategoria_descricao" maxlength="300" placeholder="Adicionar aqui..." style="all: unset; padding: 16px; width: 100%; height: 100%; resize: none;"></textarea>
+  </div>
 
-          <!-- Botão Cancelar -->
-          <button class="overlap-3">
-            <div class="text-wrapper-7">Cancelar</div>
-          </button>
+  <!-- Input Qtd de Alertas -->
+  <div class="text-wrapper-13">Qtd. evento:</div>
+  <div class="negocio-wrapper">
+    <input type="number" name="ocorreciaCategoria_qtdAlerta" value="1" min="1" max="10" required style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+    <img class="negocio" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/negocio.png" alt="Ícone" />
+  </div>
 
-          <!-- Input ID -->
-          <div class="text-wrapper-10">ID:</div>
-          <div class="rectangle">
-            <input type="text" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          </div>
+  <!-- Botão Confirmar -->
+  <button type="submit" class="div-wrapper">
+    <div class="text-wrapper-6">Confirmar</div>
+  </button>
+</form>
 
-          <!-- Input Qtd Evento -->
-          <div class="text-wrapper-13">Qtd. evento:</div>
-          <div class="negocio-wrapper">
-            <input type="number" placeholder="0" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-            <img class="negocio" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/negocio.png" alt="Ícone" />
-          </div>
+<!-- Botão Cancelar -->
+<a href="../cadastro-eventos/index2.html">
+  <button class="overlap-3" type="button">
+    <div class="text-wrapper-7">Cancelar</div>
+  </button>
+</a>
 
-          <!-- Input Nome do Evento -->
-          <div class="text-wrapper-11">Nome do Evento:</div>
-          <div class="overlap-4">
-            <input type="text" placeholder="Nome do evento" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          </div>
 
-          <!-- Textarea Descrição -->
-          <div class="text-wrapper-12">Descrição:</div>
-          <div class="overlap-5">
-            <textarea placeholder="Adicionar aqui..." style="all: unset; padding: 16px; width: 100%; height: 100%; resize: none;"></textarea>
-          </div>
 
           <!-- Título -->
           <div class="overlap-6">

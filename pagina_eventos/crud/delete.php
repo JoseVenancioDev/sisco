@@ -13,7 +13,7 @@ $stmt = $conn->prepare("DELETE FROM tb_sisco_evento WHERE evento_id = ?");
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
-    header("Location:  ../cadastro-eventos/index.html");
+    header("Location:  delete_form.php");
     exit();
 } else {
     echo "Erro ao excluir: " . $stmt->error;

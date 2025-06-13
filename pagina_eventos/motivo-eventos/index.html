@@ -7,16 +7,49 @@
     <link rel="stylesheet" href="style.css" />
     <title>Cadastro de Motivos</title>
   </head>
+  <!--JAVASCRIPT-->
+  <script>
+  // Quando o DOM carregar
+  document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('selectCategoria');
+
+   
+    // Faz a requisição ao seu PHP
+    fetch('../get/get_categoria.php') 
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(categoria => {
+          const option = document.createElement('option');
+          option.value = categoria.eventoCategoria_id;
+          option.textContent = categoria.eventoCategoria_nome;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Erro ao carregar categorias:', error);
+      });
+  });
+  
+</script>
+
   <body>
     <div class="box">
       <div class="categoria-eventos">
         <div class="overlap-group">
              <div class="overlap">
             <img class="plus" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/plus.png" />
-            <img class="document" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/document.png" />
+            <a href="../crud-motivo/index.php">
+              <img class="document" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/document.png" />
+            </a>
+            <a href="../crud-motivo/delete_form.php">
             <img class="delete" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/delete.png" />
+          </a>
+            <a href="../crud-motivo/update_form.php">
             <img class="edit-file" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/edit-file.png" />
+          </a>
+          <a href="index.html">
             <img class="refresh" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/refresh.png" />
+          </a>
           </div>
 
           <!-- Sair -->
@@ -86,31 +119,32 @@
           <img class="line-2" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/line-4.svg" alt="Linha" />
           <img class="davinci-resolve" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/davinci-resolve.png" alt="Logo" />
           
-          
+           <!-- Botão Cancelar -->
+          <button class="overlap-3">
+            <div class="text-wrapper-7">Cancelar</div>
+          </button>
+
 
           <!-- Botão Confirmar -->
+           <form action="../crud-motivo/confirm.php" method="post">
           <button class="div-wrapper">
             <div class="text-wrapper-6">Confirmar</div>
           </button>
 
           <img class="college-students" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/college-students-rafiki-1.png" alt="Ilustração" />
 
-          <!-- Botão Cancelar -->
-          <button class="overlap-3">
-            <div class="text-wrapper-7">Cancelar</div>
-          </button>
-
+         
           <!-- Input ID -->
           <div class="text-wrapper-10">ID:</div>
           <div class="rectangle">
-            <input type="text" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+            <input type="text" name="eventoMotivo_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
           </div>
 
           <!-- Input Qtd Evento -->
           <div class="text-wrapper-13">Categoria</div>
           <div class="negocio-wrapper">
-            <select name="" id="">
-
+           <select name="eventoMotivo_idCategoria" id="selectCategoria" style="all: unset; padding-left: 10px; width: 100%; height: 100%; appearance: none; cursor: pointer;" required>
+              <option value="" disabled selected>Selecione a categoria</option>
             </select>
             <img class="negocio" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/negocio.png" alt="Ícone" />
           </div>
@@ -118,15 +152,15 @@
           <!-- Input Nome do Evento -->
           <div class="text-wrapper-11">Motivo</div>
           <div class="overlap-4">
-            <input type="text" placeholder="Insira o motivo" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+            <input type="text" name="eventoMotivo_nome" placeholder="Insira o motivo" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
           </div>
 
           <!-- Textarea Descrição -->
           <div class="text-wrapper-12">Descrição:</div>
           <div class="overlap-5">
-            <textarea placeholder="Adicionar aqui..." style="all: unset; padding: 16px; width: 100%; height: 100%; resize: none;"></textarea>
+            <textarea name="eventoMotivo_descricao" placeholder="Adicionar aqui..." style="all: unset; padding: 16px; width: 100%; height: 100%; resize: none;"></textarea>
           </div>
-
+            </form>
           <!-- Título -->
           <div class="overlap-6">
             <div class="text-wrapper-14">Gestão</div>

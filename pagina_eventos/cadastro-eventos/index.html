@@ -88,53 +88,165 @@ function toggleDropdown(id) {
   const dropdown = document.getElementById(id);
   dropdown.classList.toggle('hidden');
 }
-
-function selectOption(inputId, value) {
-  const input = document.getElementById(inputId);
-  input.value = value;
-  toggleDropdown(inputId + 'Dropdown');
+//COLABORADOR
+function selectColaborador(matricula, nome) {
+  document.getElementById('colaboradorInput').value = nome;
+  document.getElementById('colaboradorHidden').value = matricula;
+  toggleDropdown('colaboradorDropdown');
 }
- document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('colaboradorDropdown');
-    const input = document.getElementById('colaboradorInput');
 
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('colaboradorDropdown');
+  const input = document.getElementById('colaboradorInput');
+
+  fetch('../get/get_colaborador.php')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(colaborador => {
+        const li = document.createElement('li');
+        li.textContent = colaborador.colaborador_nome;
+        li.onclick = () => selectColaborador(colaborador.colaborador_matricula, colaborador.colaborador_nome);
+        dropdown.appendChild(li);
+      });
+    });
+
+  document.addEventListener('click', function (event) {
     if (!dropdown.contains(event.target) && event.target !== input) {
       dropdown.classList.add('hidden');
     }
   });
-  function selectColaborador(matricula, nome) {
-  document.getElementById('colaboradorInput').value = nome;       // mostra o nome
-  document.getElementById('colaboradorHidden').value = matricula; // envia a matrícula
+});
+function selectColaborador(matricula, nome) {
+  document.getElementById('colaboradorInput').value = nome;
+  document.getElementById('colaboradorHidden').value = matricula;
   toggleDropdown('colaboradorDropdown');
 }
-function selectCategoria(inputId, id, nome) {
-  document.getElementById(inputId).value = nome;
-  document.getElementById('categoriaHiddenInput').value = id;
+// CATEGORIA
+function selectCategoria(matricula, nome) {
+  document.getElementById('categoriaInput').value = nome;
+  document.getElementById('categoriaHidden').value = matricula;
   toggleDropdown('categoriaDropdown');
 }
-function selectMotivo(inputId, id, nome) {
-  document.getElementById(inputId).value = nome;
-  document.getElementById('motivoHiddenInput').value = id;
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('categoriaDropdown');
+  const input = document.getElementById('categoriaInput');
+
+  fetch('../get/get_categoria.php')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(categoria => {
+        const li = document.createElement('li');
+        li.textContent = categoria.eventoCategoria_nome;
+        li.onclick = () => selectCategoria(categoria.eventoCategoria_id, categoria.eventoCategoria_nome);
+        dropdown.appendChild(li);
+      });
+    });
+
+  document.addEventListener('click', function (event) {
+    if (!dropdown.contains(event.target) && event.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+});
+function selectColaborador(matricula, nome) {
+  document.getElementById('colaboradorInput').value = nome;
+  document.getElementById('colaboradorHidden').value = matricula;
+  toggleDropdown('colaboradorDropdown');
+}
+// MOTIVO
+function selectMotivo(matricula, nome) {
+  document.getElementById('motivoInput').value = nome;
+  document.getElementById('motivoHidden').value = matricula;
   toggleDropdown('motivoDropdown');
 }
-function selectDiscente(inputId, matricula, nome) {
-  document.getElementById(inputId).value = nome;
-  document.getElementById('discenteHiddenInput').value = matricula;
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('motivoDropdown');
+  const input = document.getElementById('motivoInput');
+
+  fetch('../get/get_motivo.php')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(motivo => {
+        const li = document.createElement('li');
+        li.textContent = motivo.eventoMotivo_nome;
+        li.onclick = () => selectMotivo(motivo.eventoMotivo_id, motivo.eventoMotivo_nome);
+        dropdown.appendChild(li);
+      });
+    });
+
+  document.addEventListener('click', function (event) {
+    if (!dropdown.contains(event.target) && event.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+});
+function selectColaborador(matricula, nome) {
+  document.getElementById('colaboradorInput').value = nome;
+  document.getElementById('colaboradorHidden').value = matricula;
+  toggleDropdown('colaboradorDropdown');
+}
+//DISCENTE
+function selectDiscente(matricula, nome) {
+  document.getElementById('discenteInput').value = nome;
+  document.getElementById('discenteHidden').value = matricula;
   toggleDropdown('discenteDropdown');
 }
-function selectResponsavel(inputId, id, nome) {
-  document.getElementById(inputId).value = nome;
-  document.getElementById('responsavelHiddenInput').value = id;
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('discenteDropdown');
+  const input = document.getElementById('discenteInput');
+
+  fetch('../get/get_discente.php')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(discente => {
+        const li = document.createElement('li');
+        li.textContent = discente.discente_nome;
+        li.onclick = () => selectDiscente(discente.discente_matricula, discente.discente_nome);
+        dropdown.appendChild(li);
+      });
+    });
+
+  document.addEventListener('click', function (event) {
+    if (!dropdown.contains(event.target) && event.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+});
+//RESPONSAVEL
+function selectResponsavel(matricula, nome) {
+  document.getElementById('responsavelInput').value = nome;
+  document.getElementById('responsavelHidden').value = matricula;
   toggleDropdown('responsavelDropdown');
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('responsavelDropdown');
+  const input = document.getElementById('responsavelInput');
+
+  fetch('../get/get_responsavel.php')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(responsavel => {
+        const li = document.createElement('li');
+        li.textContent = responsavel.responsavelLegal_nome;
+        li.onclick = () => selectResponsavel(responsavel.responsavelLegal_id, responsavel.responsavelLegal_nome);
+        dropdown.appendChild(li);
+      });
+    });
+
+  document.addEventListener('click', function (event) {
+    if (!dropdown.contains(event.target) && event.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+});
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('formEvento').addEventListener('submit', function(event) {
     const camposObrigatorios = [
       { id: 'colaboradorHidden', nome: 'Colaborador' },
-      { id: 'discenteHiddenInput', nome: 'Discente' },
-      { id: 'responsavelHiddenInput', nome: 'Responsável' },
-      { id: 'categoriaHiddenInput', nome: 'Categoria do Evento' },
-      { id: 'motivoHiddenInput', nome: 'Motivo' },
+      { id: 'discenteHidden', nome: 'Discente' },
+      { id: 'responsavelHidden', nome: 'Responsável' },
+      { id: 'categoriaHidden', nome: 'Categoria do Evento' },
+      { id: 'motivoHidden', nome: 'Motivo' },
       { name: 'evento_id', nome: 'ID do Evento' },
       { name: 'evento_data', nome: 'Data' },
       { name: 'evento_hora', nome: 'Hora' },
@@ -159,86 +271,129 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+// BUSCAR
+function buscarDiscentes() {
+  const termo = document.getElementById("buscaDiscente").value;
+  const lista = document.getElementById("listaDiscentes");
 
+  if (termo.length < 2) {
+    lista.innerHTML = '';
+    lista.classList.add('hidden');
+    return;
+  }
+
+  fetch(`../crud/buscar.php?q=${encodeURIComponent(termo)}`)
+    .then(response => response.json())
+    .then(discentes => {
+      lista.innerHTML = '';
+      discentes.forEach(d => {
+        const item = document.createElement("li");
+        item.textContent = d.discente_nome;
+        item.onclick = function () {
+  document.getElementById("buscaDiscente").value = d.discente_nome;
+  document.getElementById("discenteInput").value = d.discente_nome;
+  document.getElementById("discenteHidden").value = d.discente_matricula;
+  document.getElementById("responsavelHidden").value = d.responsavelLegal_id;
+  document.getElementById("responsavelInput").value = d.responsavelLegal_nome;
+  lista.classList.add("hidden");
+};
+
+
+        lista.appendChild(item);
+      });
+      lista.classList.remove('hidden');
+    });
+}
 </script>
-
   <body>
     <div class="cadastro-de-eventos">
       <div class="div">
+        <a href="index2.html">
+        <button  class="overlap"><div class="text-wrapper-2">Cancelar</div></button>
+      </a> 
        <form id="formEvento" method="POST" action="../crud/confirm.php">
           <button href="index.html" class="overlap-group"><div class="text-wrapper">Confirmar</div></button>
-        <button class="overlap"><div class="text-wrapper-2">Cancelar</div></button>
         <div class="rectangle">
           <input type="number" min="0" name="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="overlap-2">
        <div class="dropdown-container">
   <div class="dropdown-container">
-  <!-- Campo visível ao usuário -->
-  <input type="text" id="colaboradorInput" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" readonly onclick="toggleDropdown('colaboradorDropdown')" />
+    <!--  ===============================================>COLABORADOR<=============================================== -->
+ <!-- Campo visível ao usuário -->
+<input type="text" id="colaboradorInput" placeholder="Nome:" readonly onclick="toggleDropdown('colaboradorDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" />
 
-  <!-- Campo oculto que envia a matrícula -->
-  <input type="hidden" id="colaboradorHidden" name="evento_idColaborador" />
+<!-- Campo oculto -->
+<input type="hidden" id="colaboradorHidden" name="evento_idColaborador" />
 
-  <img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('colaboradorDropdown')" />
+<img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('colaboradorDropdown')" />
 
-  <!-- Lista de opções -->
-  <ul id="colaboradorDropdown" class="dropdown hidden">
-    <li onclick="selectColaborador('4786271X', 'WERBSON FALCAO DE LIMA')">WERBSON FALCAO DE LIMA</li>
-    <li onclick="selectColaborador('01952', 'Raphael Sanzio de Carvalho Silva')">Raphael Sanzio de Carvalho Silva</li>
-    <li onclick="selectColaborador('9788191X', 'MARIO FAGNER LOUREIRO DA ROCHA')">MARIO FAGNER LOUREIRO DA ROCHA</li>
-    <li onclick="selectColaborador('81054258', 'Adriano Jose Sousa dos Anjos')">Adriano Jose Sousa dos Anjos</li>
-    <li onclick="selectColaborador('16849219', 'ROSELENA FERNANDES SILVA')">ROSELENA FERNANDES SILVA</li>
-  </ul>
+<!-- Dropdown preenchido dinamicamente -->
+<ul id="colaboradorDropdown" class="dropdown hidden"></ul>
+
 </div>
 
 </div>
 </div>
-
         <div class="overlap-3">
            <img class="vector" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector.svg" />
-          <input type="text" placeholder="Buscar:" style="all: unset; padding-left: 30px; width: 100%; height: 100%;" />
-        </div>
-        <div class="overlap-4">
-       <input type="text" id="responsavelInput" name="evento_idResponsavel_visual" placeholder="Selecione um Responsável" readonly onclick="toggleDropdown('responsavelDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-          <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('responsavelDropdown')" />
-  <ul id="responsavelDropdown" class="dropdown hidden">
-    <li onclick="selectResponsavel('responsavelInput', '1', 'FRANCISCO ANTONIO DE FREITAS DO NASCIMENTO')">FRANCISCO ANTONIO DE FREITAS DO NASCIMENTO</li>
-    <li onclick="selectResponsavel('responsavelInput', '2', 'JOSE WIRATAN MARQUES')">JOSE WIRATAN MARQUES</li>
-    <li onclick="selectResponsavel('responsavelInput', '3', 'ANTONIO MACIEL DE OLIVEIRA')">ANTONIO MACIEL DE OLIVEIRA</li>
-  </ul>
-  <input type="hidden" name="evento_idResponsavel" id="responsavelHiddenInput" />
+          <input type="text" id="buscaDiscente"  onkeyup="buscarDiscentes()" autocomplete="off" placeholder="Buscar:" style="all: unset; padding-left: 30px; width: 100%; height: 100%;" />
+<ul id="listaDiscentes" class="dropdown hidden"></ul>
 
+<!-- Campos ocultos para matrícula e responsável -->
+<input type="hidden" name="evento_idDiscente" id="discenteHidden" />
+<input type="hidden" name="evento_idResponsavel" id="responsavelHidden" />
+
+
+        </div>
+<!--  ===============================================>RESPONSAVEL<=============================================== -->
+        <div class="overlap-4">
+       <!-- Campo visível ao usuário -->
+<input type="text" id="responsavelInput" placeholder="Nome do responsavel:" readonly onclick="toggleDropdown('responsavelDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" />
+
+
+<img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('responsavelDropdown')" />
+
+<!-- Dropdown preenchido dinamicamente -->
+<ul id="responsavelDropdown" class="dropdown hidden"></ul>
+<!--  ===============================================>CATEGORIA<=============================================== -->
         </div>
        <div class="overlap-5">
-  <input type="text" id="categoriaInput" name="evento_idCategoria" placeholder="Selecione uma categoria" readonly onclick="toggleDropdown('categoriaDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-  <img class="expand-arrow-2" src="seta.png" onclick="toggleDropdown('categoriaDropdown')" />
-  <ul id="categoriaDropdown" class="dropdown hidden">
-    <li onclick="selectCategoria('categoriaInput', '1', 'Impontualidade')">Impontualidade</li>
-    <li onclick="selectCategoria('categoriaInput', '2', 'Fardamento incompleto')">Fardamento incompleto</li>
-    <li onclick="selectCategoria('categoriaInput', '3', 'Acessórios inapropriados')">Acessórios inapropriados</li>
-  </ul>
-  <input type="hidden" name="evento_idCategoria" id="categoriaHiddenInput" />
+  <!-- Campo visível ao usuário -->
+<input type="text" id="categoriaInput" name="evento_idCategoria" placeholder="Selecione a categoria:" readonly onclick="toggleDropdown('categoriaDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" />
+
+<!-- Campo oculto -->
+<input type="hidden" id="categoriaHidden" name="eventoCategoria_id" />
+
+<img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('categoriaDropdown')" />
+
+<!-- Dropdown preenchido dinamicamente -->
+<ul id="categoriaDropdown" class="dropdown hidden"></ul>
+
 </div>
 
+<!--  ===============================================>MOTIVO<=============================================== -->
         <div class="overlap-6">
-  <input type="text" id="motivoInput" name="evento_idMotivo_visual" placeholder="Selecione um motivo" readonly onclick="toggleDropdown('motivoDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-  <img class="expand-arrow-2" src="seta.png" onclick="toggleDropdown('motivoDropdown')" />
-  <ul id="motivoDropdown" class="dropdown hidden">
-    <li onclick="selectMotivo('motivoInput', '1', 'Transporte atrasou')">Transporte atrasou</li>
-    <li onclick="selectMotivo('motivoInput', '2', 'Ausência da blusa da farda')">Ausência da blusa da farda</li>
-    <li onclick="selectMotivo('motivoInput', '3', 'Boné, toca ou chapeú')">Boné, toca ou chapeú</li>
-  </ul>
-  <input type="hidden" name="evento_idMotivo" id="motivoHiddenInput" />
+   <!-- Campo visível ao usuário -->
+<input type="text" id="motivoInput" name="evento_idMotivo" placeholder="Selecione o motivo:" readonly onclick="toggleDropdown('motivoDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" />
+
+<!-- Campo oculto -->
+<input type="hidden" id="motivoHidden" name="eventoMotivo_id" />
+
+<img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('motivoDropdown')" />
+
+<!-- Dropdown preenchido dinamicamente -->
+<ul id="motivoDropdown" class="dropdown hidden"></ul>
+
 </div>
 <div class="div-wrapper">
-  <textarea name="evento_observacao" placeholder="Digite a observação aqui..." 
+  <textarea name="evento_observacao" maxlength="300" placeholder="Digite a observação aqui..." 
     style="all: unset; padding: 10px; width: 100%; height: 100px; font-family: sans-serif; font-size: 14px; border: 1px; border-radius: 4px;">
   </textarea>
 </div>
 <div class="rectangle-2">
 
-          <input type="date" name="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
+          <input type="date" name="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;"  />
         </div>
         <div class="text-wrapper-7">ID:</div>
         <div class="text-wrapper-8">Colaborador:</div>
@@ -248,16 +403,17 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="text-wrapper-12">Observação:</div>
         <div class="text-wrapper-13">Data:</div>
         <div class="overlap-7">
-          <img class="expand-arrow-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" />
-          <input type="text" id="discenteInput" name="evento_idDiscente_visual" placeholder="Selecione um discente" readonly onclick="toggleDropdown('discenteDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
-  <img class="vector" src="" onclick="toggleDropdown('discenteDropdown')" />
-  <ul id="discenteDropdown" class="dropdown hidden">
-    <li onclick="selectDiscente('discenteInput', '1587238', 'SAMYA EVELYN DE LIMA SILVA')">SAMYA EVELYN DE LIMA SILVA</li>
-    <li onclick="selectDiscente('discenteInput', '1686320', 'BIANCA SOUSA DOS SANTOS')">BIANCA SOUSA DOS SANTOS</li>
-    <li onclick="selectDiscente('discenteInput', '1687262', 'RAFAEL SANTOS SILVA')">RAFAEL SANTOS SILVA</li>
-      <input type="hidden" name="evento_idDiscente" id="discenteHiddenInput" />
+<!--  ===============================================>DISCENTE<=============================================== -->
+         <!-- Campo visível ao usuário -->
+<input type="text" id="discenteInput" placeholder="Nome do discente:" readonly onclick="toggleDropdown('discenteDropdown')" style="all: unset; padding-left: 10px; width: 100%; height: 100%; position: absolute;" />
+
+
+<img class="expand-arrow" src="https://c.animaapp.com/mb7u88iye7xe8U/img/expand-arrow-4.png" onclick="toggleDropdown('discenteDropdown')" />
+
+<!-- Dropdown preenchido dinamicamente -->
+<ul id="discenteDropdown" class="dropdown hidden"></ul>
         </div>
-        <div class="text-wrapper-14">Cursista:</div>
+        <div class="text-wrapper-14">Discente:</div>
         <div class="overlap-8">
           <div class="text-wrapper-15">Gestão</div>
           <div class="text-wrapper-16">Cadastro de eventos</div>
@@ -280,17 +436,25 @@ document.addEventListener('DOMContentLoaded', function () {
           />
         </div>
         <div class="overlap-11">
-          <div class="text-wrapper-19">Não</div>
+          <div class="text-wrapper-19">
+            <label><input type="radio" name="evento_alerta" value="1" checked> Sim</label>
+          </div>
           <img
             class="fluent-emoji-sad"
             src="https://c.animaapp.com/mb7u88iye7xe8U/img/fluent-emoji-sad-16-filled.svg"
           />
         </div>
-        <div class="text-wrapper-20">Sim</div>
+        <div class="text-wrapper-20">
+          <label><input type="radio" name="evento_alerta" value="0"> Não</label>
+        </div>
         <img class="plus-math" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
         <img class="plus-math-2" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
-        <img class="plus-math-3" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
-        <img class="plus-math-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
+         <a href="../categoria_eventos/index.html">
+          <img class="plus-math-3" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
+        </a>
+        <a href="../motivo-eventos/index.html">
+          <img class="plus-math-4" src="https://c.animaapp.com/mb7u88iye7xe8U/img/plus-math-3.png" />
+          </a>
         <img class="vector-2" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector-3.svg" />
         <div class="group"></div>
         <img class="vector-3" src="https://c.animaapp.com/mb7u88iye7xe8U/img/vector-2.svg" />
@@ -298,10 +462,10 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="text-wrapper-21">Alertas</div>
         <div class="text-wrapper-23">Eventos</div><br>
         <div style="margin-top: 30rem; margin-left: 4rem;">
-          <a href="../motivo-eventos/" class="text-navbar link-motivo">Motivo</a><br>
+          <a href="../motivo-eventos/index.html" class="text-navbar link-motivo">Motivo</a><br>
         </div>
         <div style="margin-top: 0.2rem; margin-left: 4rem;">
-          <a href="../categoria_eventos/" class="link-categoria text-navbar">Categoria</a>
+          <a href="../categoria_eventos/index.html" class="link-categoria text-navbar">Categoria</a>
         </div>
         <div class="text-wrapper-24">Ocorrência</div>
         <div class="text-wrapper-26">Ajuda</div>

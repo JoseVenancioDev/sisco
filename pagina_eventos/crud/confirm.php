@@ -5,8 +5,8 @@ include 'db.php';
 $id = $_POST['evento_id'];
 $colaborador = $_POST['evento_idColaborador'];
 $responsavel = $_POST['evento_idResponsavel'];
-$categoria = $_POST['evento_idCategoria'];
-$motivo = $_POST['evento_idMotivo'];
+$categoria = $_POST['eventoCategoria_id'];
+$motivo = $_POST['eventoMotivo_id'];
 $observacao = isset($_POST['evento_observacao']) && !empty(trim($_POST['evento_observacao'])) ? $_POST['evento_observacao'] : NULL;
 $data = $_POST['evento_data'];
 $hora = $_POST['evento_hora'];
@@ -34,11 +34,16 @@ $sql = "INSERT INTO tb_sisco_evento (
     '$hora', 
     '$discente'
 )";
+$alerta = isset($_POST['evento_alerta']) ? $_POST['evento_alerta'] : 0;
 
 
 if ($conn->query($sql) === TRUE) {
-    echo "Evento cadastrado com sucesso!";
-    header("Location: ../cadastro-eventos/index.html");
+    echo "<script>
+        alert('Evento cadastrado com sucesso!');
+        setTimeout(function() {
+            window.location.href = '../cadastro-eventos/index2.html';
+        }, 200);
+    </script>";
     exit;
 } else {
     echo "Erro: " . $sql . "<br>" . $conn->error;
