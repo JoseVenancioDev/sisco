@@ -81,6 +81,16 @@
   tr:hover {
     background-color: #f9f9f9;
   }
+  #contadorAlertas {
+  margin-left: 100px;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 0.9em;
+  background-color: #ffeeee;
+  padding: 2px 20px;
+  border-radius: 10px;
+  display: none; /* Inicialmente oculto */
+}
 </style>
   </head>
   <script>
@@ -122,11 +132,87 @@ function selectColaborador(matricula, nome) {
   toggleDropdown('colaboradorDropdown');
 }
 // CATEGORIA
-function selectCategoria(matricula, nome) {
+function selectCategoria(id, nome) {
   document.getElementById('categoriaInput').value = nome;
-  document.getElementById('categoriaHidden').value = matricula;
+  document.getElementById('categoriaHidden').value = id;
   toggleDropdown('categoriaDropdown');
+  
+  // Limpa o motivo selecionado quando muda a categoria
+  document.getElementById('motivoInput').value = '';
+  document.getElementById('motivoHidden').value = '';
+  
+  // Carrega os motivos filtrados pela categoria
+  carregarMotivosPorCategoria(id);
+  // Busca a quantidade de alertas para esta categoria
+  buscarAlertasPorCategoria(id);
 }
+// Função para buscar alertas
+function buscarAlertasPorCategoria(categoriaId) {
+  fetch(`../get/get_alertas.php?eventoCategoria_id=${categoriaId}`)
+    .then(res => res.json())
+    .then(data => {
+      const contador = document.getElementById('contadorAlertas');
+      if (data.ocorreciaCategoria_qtdAlerta > 0) {
+        contador.textContent = `(${data.ocorreciaCategoria_qtdAlerta} alertas)`;
+        contador.style.display = 'inline';
+      } else {
+        contador.textContent = '';
+        contador.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao buscar alertas:', error);
+    });
+}
+
+// Adicione no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  // ... outro código existente ...
+  
+  // Verifica se o contador já existe, se não, cria
+  if (!document.getElementById('contadorAlertas')) {
+    const contador = document.createElement('span');
+    contador.id = 'contadorAlertas';
+    contador.style.marginLeft = '100px';
+    contador.style.color = '#ff0000';
+    contador.style.fontWeight = 'bold';
+    contador.style.display = 'none';
+    
+    // Encontra o label do radio "Sim" e adiciona o contador
+    const labelSim = document.querySelector('input[name="evento_alerta"][value="1"]').parentNode;
+    labelSim.appendChild(contador);
+  }
+});
+function carregarMotivosPorCategoria(categoriaId) {
+  const dropdown = document.getElementById('motivoDropdown');
+  dropdown.innerHTML = ''; // Limpa os motivos anteriores
+  
+  fetch(`../get/get_motivo.php?categoria_id=${categoriaId}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'Nenhum motivo disponível para esta categoria';
+        dropdown.appendChild(li);
+      } else {
+        data.forEach(motivo => {
+          const li = document.createElement('li');
+          li.textContent = motivo.eventoMotivo_nome;
+          li.onclick = () => selectMotivo(motivo.eventoMotivo_id, motivo.eventoMotivo_nome);
+          dropdown.appendChild(li);
+        });
+      }
+    });
+}
+
+// MOTIVO
+function selectMotivo(id, nome) {
+  document.getElementById('motivoInput').value = nome;
+  document.getElementById('motivoHidden').value = id;
+  toggleDropdown('motivoDropdown');
+}
+
+// Modifique o evento DOMContentLoaded para a categoria
 document.addEventListener('DOMContentLoaded', () => {
   const dropdown = document.getElementById('categoriaDropdown');
   const input = document.getElementById('categoriaInput');
@@ -147,44 +233,22 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.add('hidden');
     }
   });
-});
-function selectColaborador(matricula, nome) {
-  document.getElementById('colaboradorInput').value = nome;
-  document.getElementById('colaboradorHidden').value = matricula;
-  toggleDropdown('colaboradorDropdown');
-}
-// MOTIVO
-function selectMotivo(matricula, nome) {
-  document.getElementById('motivoInput').value = nome;
-  document.getElementById('motivoHidden').value = matricula;
-  toggleDropdown('motivoDropdown');
-}
-document.addEventListener('DOMContentLoaded', () => {
-  const dropdown = document.getElementById('motivoDropdown');
-  const input = document.getElementById('motivoInput');
+  
+  // Inicializa o dropdown de motivos vazio
+  const motivoDropdown = document.getElementById('motivoDropdown');
+  motivoDropdown.innerHTML = '<li>Selecione uma categoria primeiro</li>';
 
-  fetch('../get/get_motivo.php')
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(motivo => {
-        const li = document.createElement('li');
-        li.textContent = motivo.eventoMotivo_nome;
-        li.onclick = () => selectMotivo(motivo.eventoMotivo_id, motivo.eventoMotivo_nome);
-        dropdown.appendChild(li);
-      });
-    });
-
-  document.addEventListener('click', function (event) {
-    if (!dropdown.contains(event.target) && event.target !== input) {
-      dropdown.classList.add('hidden');
-    }
-  });
+  // Adicione este código no DOMContentLoaded
+document.getElementById('categoriaInput').addEventListener('click', function() {
+  // Limpa o motivo quando clicar para selecionar outra categoria
+  document.getElementById('motivoInput').value = '';
+  document.getElementById('motivoHidden').value = '';
+  const motivoDropdown = document.getElementById('motivoDropdown');
+  motivoDropdown.innerHTML = '<li>Selecione uma categoria primeiro</li>';
 });
-function selectColaborador(matricula, nome) {
-  document.getElementById('colaboradorInput').value = nome;
-  document.getElementById('colaboradorHidden').value = matricula;
-  toggleDropdown('colaboradorDropdown');
-}
+});
+
+
 //DISCENTE
 function selectDiscente(matricula, nome) {
   document.getElementById('discenteInput').value = nome;
@@ -247,7 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
       { id: 'responsavelHidden', nome: 'Responsável' },
       { id: 'categoriaHidden', nome: 'Categoria do Evento' },
       { id: 'motivoHidden', nome: 'Motivo' },
-      { name: 'evento_id', nome: 'ID do Evento' },
       { name: 'evento_data', nome: 'Data' },
       { name: 'evento_hora', nome: 'Hora' },
       { name: 'evento_idDiscente', nome: 'Discente' }
@@ -304,6 +367,20 @@ function buscarDiscentes() {
       lista.classList.remove('hidden');
     });
 }
+//DATA ATUAL
+document.addEventListener('DOMContentLoaded', function() {
+  // Formata a data atual no formato YYYY-MM-DD que o input date espera
+  const hoje = new Date();
+  const dia = String(hoje.getDate()).padStart(2, '0');
+  const mes = String(hoje.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+  const ano = hoje.getFullYear();
+  
+  const dataFormatada = `${ano}-${mes}-${dia}`;
+  
+  // Define o valor do input
+  document.getElementById('evento_data').value = dataFormatada;
+});
+
 </script>
   <body>
     <div class="cadastro-de-eventos">
@@ -314,7 +391,7 @@ function buscarDiscentes() {
        <form id="formEvento" method="POST" action="../crud/confirm.php">
           <button href="index.html" class="overlap-group"><div class="text-wrapper">Confirmar</div></button>
         <div class="rectangle">
-          <input type="number" min="0" name="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
+          <input type="number" min="0" name="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" readonly />
         </div>
         <div class="overlap-2">
        <div class="dropdown-container">
@@ -393,7 +470,7 @@ function buscarDiscentes() {
 </div>
 <div class="rectangle-2">
 
-          <input type="date" name="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;"  />
+          <input type="date" name="evento_data" id="evento_data" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;"  />
         </div>
         <div class="text-wrapper-7">ID:</div>
         <div class="text-wrapper-8">Colaborador:</div>
@@ -428,22 +505,24 @@ function buscarDiscentes() {
           </div>
           <img class="mdi-user" src="https://c.animaapp.com/mb7u88iye7xe8U/img/mdi-user.svg" />
         </div>
-        <div class="overlap-10">
-          <div class="text-wrapper-18">Alerta ativo:</div>
-          <img
-            class="heroicons-solid"
-            src="https://c.animaapp.com/mb7u88iye7xe8U/img/heroicons-solid-emoji-happy.svg"
-          />
-        </div>
-        <div class="overlap-11">
-          <div class="text-wrapper-19">
-            <label><input type="radio" name="evento_alerta" value="1" checked> Sim</label>
-          </div>
-          <img
-            class="fluent-emoji-sad"
-            src="https://c.animaapp.com/mb7u88iye7xe8U/img/fluent-emoji-sad-16-filled.svg"
-          />
-        </div>
+       <!-- Substitua esta parte do seu HTML -->
+<div class="overlap-10">
+  <div class="text-wrapper-18">Alerta ativo:</div>
+  <img
+    class="heroicons-solid"
+    src="https://c.animaapp.com/mb7u88iye7xe8U/img/heroicons-solid-emoji-happy.svg"
+  />
+</div>
+<div class="overlap-11">
+  <div class="text-wrapper-19">
+    <label><input type="radio" name="evento_alerta" value="1" checked> Sim</label>
+    <span id="contadorAlertas" style="margin-left: 70px; color: #ff0000; font-weight: bold;"></span>
+  </div>
+  <img
+    class="fluent-emoji-sad"
+    src="https://c.animaapp.com/mb7u88iye7xe8U/img/fluent-emoji-sad-16-filled.svg"
+  />
+</div>
         <div class="text-wrapper-20">
           <label><input type="radio" name="evento_alerta" value="0"> Não</label>
         </div>

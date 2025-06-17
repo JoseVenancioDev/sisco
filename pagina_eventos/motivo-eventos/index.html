@@ -14,7 +14,7 @@
     const select = document.getElementById('selectCategoria');
 
    
-    // Faz a requisição ao seu PHP
+    // Faz a requisição ao  PHP
     fetch('../get/get_categoria.php') 
       .then(response => response.json())
       .then(data => {
@@ -137,7 +137,7 @@
           <!-- Input ID -->
           <div class="text-wrapper-10">ID:</div>
           <div class="rectangle">
-            <input type="text" name="eventoMotivo_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+            <input type="text" name="eventoMotivo_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;"  readonly/>
           </div>
 
           <!-- Input Qtd Evento -->
