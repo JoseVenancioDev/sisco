@@ -8,6 +8,16 @@
     <title>Categoria de Eventos</title>
   </head>
   <body>
+    <script>
+      fetch('../get/get-categoria_id.php') // ajuste o caminho
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('eventoCategoria_id').value = data.nextId;
+          })
+          .catch(error => {
+            console.error('Erro ao buscar o próximo ID:', error);
+          });
+    </script>
     <div class="box">
       <div class="categoria-eventos">
         <div class="overlap-group">
@@ -99,7 +109,7 @@
   <!-- Input ID (opcional) -->
   <div class="text-wrapper-10">ID:</div>
   <div class="rectangle">
-    <input type="number" name="eventoCategoria_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" readonly />
+    <input type="number" name="eventoCategoria_id" id="eventoCategoria_id" placeholder="Digite o ID" style="all: unset; padding-left: 10px; width: 100%; height: 100%;" readonly />
   </div>
 
   <!-- Input Nome da Categoria -->
@@ -117,7 +127,7 @@
   <!-- Input Qtd de Alertas -->
   <div class="text-wrapper-13">Qtd. evento:</div>
   <div class="negocio-wrapper">
-    <input type="number" name="ocorreciaCategoria_qtdAlerta" value="1" min="1" max="10" required style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
+    <input type="number" name="ocorreciaCategoria_qtdAlerta" value="3" min="1" max="10" required style="all: unset; padding-left: 10px; width: 100%; height: 100%;" />
     <img class="negocio" src="https://c.animaapp.com/mb7tqg4jpC7yeV/img/negocio.png" alt="Ícone" />
   </div>
 

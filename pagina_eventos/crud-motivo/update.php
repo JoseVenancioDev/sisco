@@ -1,3 +1,4 @@
+<title>Sisco - Editar Motivos</title>
 <?php
 include 'db.php';
 
@@ -25,24 +26,38 @@ $motivo = $result->fetch_assoc();
 ?>
 
 <h2>Editar Motivo</h2>
-<form method="POST">
-    <label>Motivo:</label>
-    <input type="text" name="eventoMotivo_nome" value="<?= $motivo['eventoMotivo_nome'] ?>" required><br>
+<!-- Inclua no <head> da sua página, se ainda não tiver -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <label>Descrição:</label>
-    <textarea name="eventoMotivo_descricao"><?= $motivo['eventoMotivo_descricao'] ?></textarea><br>
+<div class="container mt-5">
+  <h2 class="mb-4">Editar Motivo</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Motivo:</label>
+      <input type="text" class="form-control" name="eventoMotivo_nome" value="<?= $motivo['eventoMotivo_nome'] ?>" required>
+    </div>
 
-    <label>Categoria:</label>
-    <select name="eventoMotivo_idCategoria">
+    <div class="mb-3">
+      <label class="form-label">Descrição:</label>
+      <textarea class="form-control" name="eventoMotivo_descricao" rows="3" required><?= $motivo['eventoMotivo_descricao'] ?></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Categoria:</label>
+      <select class="form-select" name="eventoMotivo_idCategoria">
         <?php
         $cat = $conn->query("SELECT * FROM tb_sisco_eventocategoria ORDER BY eventoCategoria_nome");
         while ($c = $cat->fetch_assoc()):
         ?>
         <option value="<?= $c['eventoCategoria_id'] ?>" <?= $motivo['eventoMotivo_idCategoria'] == $c['eventoCategoria_id'] ? 'selected' : '' ?>>
-            <?= $c['eventoCategoria_nome'] ?>
+          <?= $c['eventoCategoria_nome'] ?>
         </option>
         <?php endwhile; ?>
-    </select><br>
+      </select>
+    </div>
 
-    <button type="submit">Salvar</button>
-</form>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+
+  </form>
+</div>

@@ -1,3 +1,12 @@
+<title>Sisco - Deletar Categorias</title>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+<!-- DataTables Buttons CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
 <?php
 include 'db.php';
 
@@ -16,14 +25,17 @@ echo "<a href='../categoria_eventos/index.html' style='display: inline-block; ma
 
 // Exibir tabela de categorias
 echo "<h2>Lista de Categorias</h2>";
-echo "<table border='1'>
+echo "<table border='1' id='tabelaCategoria' class='table table-striped table-bordered' style='width:100%'>
+  <thead>
   <tr>
     <th>ID</th>
     <th>Nome da Categoria</th>
     <th>Qtd Alerta</th>
     <th>Descrição</th>
     <th>Ação</th>
-  </tr>";
+  </tr>
+  </thead>
+  <tbody>";
 
 foreach ($categorias as $cat) {
   echo "<tr>";
@@ -31,8 +43,27 @@ foreach ($categorias as $cat) {
   echo "<td>" . htmlspecialchars($cat['eventoCategoria_nome']) . "</td>";
   echo "<td>" . $cat['ocorreciaCategoria_qtdAlerta'] . "</td>";
   echo "<td>" . (!empty($cat['eventoCategoria_descricao']) ? htmlspecialchars($cat['eventoCategoria_descricao']) : '-') . "</td>";
-  echo "<td><a href='delete.php?id=" . $cat['eventoCategoria_id'] . "' onclick=\"return confirm('Deseja excluir esta categoria?')\">🗑️ Excluir</a></td>";
+  echo "<td><a class='btn btn-danger' href='delete.php?id=" . $cat['eventoCategoria_id'] . "' onclick=\"return confirm('Deseja excluir esta categoria?')\">Deletar</a></td>";
   echo "</tr>";
 }
-echo "</table>";
+echo "</tbody></table>";
 ?>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+
+<script>
+  $(document).ready(function () {
+    $('#tabelaCategoria').DataTable({
+      dom: 'Bfrtip',
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json'
+      }
+    });
+  });
+</script>

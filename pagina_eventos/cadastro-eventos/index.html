@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
+    <title>Sisco - Cadastro de Eventos</title>
     <style>
 
 
@@ -167,7 +168,7 @@ function buscarAlertasPorCategoria(categoriaId) {
 
 // Adicione no DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  // ... outro código existente ...
+
   
   // Verifica se o contador já existe, se não, cria
   if (!document.getElementById('contadorAlertas')) {
@@ -379,7 +380,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Define o valor do input
   document.getElementById('evento_data').value = dataFormatada;
+  
 });
+
+//DATA ATUAL
+document.addEventListener('DOMContentLoaded', function() {
+  // Formata a data atual no formato YYYY-MM-DD que o input date espera
+  const agora = new Date();
+  const hora = String(agora.getHours()).padStart(2, '0');
+  const minuto = String(agora.getMinutes()).padStart(2, '0');
+  
+
+  const horaFormatada = `${hora}:${minuto}`;
+
+  console.log
+  // Define o valor do input
+  document.getElementById('evento_hora').value = horaFormatada;
+});
+
+fetch('../get/get-evento_id.php') // ajuste o caminho
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('evento_id').value = data.nextId;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar o próximo ID:', error);
+      });
 
 </script>
   <body>
@@ -391,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
        <form id="formEvento" method="POST" action="../crud/confirm.php">
           <button href="index.html" class="overlap-group"><div class="text-wrapper">Confirmar</div></button>
         <div class="rectangle">
-          <input type="number" min="0" name="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" readonly />
+          <input type="number" min="0" readonly name="evento_id" id="evento_id" placeholder="Selecione" style="all: unset; padding-left: 10px; width: 90%; height: 100%;"  />
         </div>
         <div class="overlap-2">
        <div class="dropdown-container">
@@ -496,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="text-wrapper-16">Cadastro de eventos</div>
         </div>
         <div class="rectangle-3">
-          <input type="time" name="evento_hora" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
+          <input type="time" name="evento_hora" id="evento_hora" placeholder="Nome:" style="all: unset; padding-left: 10px; width: 90%; height: 100%;" />
         </div>
         <div class="text-wrapper-17">Hora:</div>
         <div class="overlap-9">

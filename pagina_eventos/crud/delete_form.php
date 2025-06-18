@@ -1,3 +1,13 @@
+<title>Sisco - Deletar Eventos</title>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+<!-- DataTables Buttons CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+
 <?php
 include 'db.php';
 
@@ -49,8 +59,9 @@ if ($result) {
 echo "<a href='../cadastro-eventos/index2.html' style='display: inline-block; margin: 20px 0; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;'>⬅ Voltar para Início</a>";
 
 $result = $conn->query("SELECT * FROM tb_sisco_evento");
-
-echo "<table border='1'>
+echo "<h2>Lista de Eventos</h2>";
+echo "<table id='tabelaEventos' border='1' class='table table-striped table-bordered' style='width:100%'>
+  <thead>
  <tr>
     <th>ID</th>
     <th>Colaborador</th>
@@ -62,7 +73,9 @@ echo "<table border='1'>
     <th>Hora</th>
     <th>Observação</th>
     <th>Ação</th>
-  </tr>";
+  </tr>
+  </thead>
+  <tbody>";
 
 while ($row = $result->fetch_assoc()) {
   echo "<tr>";
@@ -75,8 +88,29 @@ while ($row = $result->fetch_assoc()) {
   echo "<td>" . $row['evento_data'] . "</td>";
   echo "<td>" . $row['evento_hora'] . "</td>";
   echo "<td>" . (!empty($row['evento_observacao']) ? htmlspecialchars($row['evento_observacao']) : '-') . "</td>";
-  echo "<td><a href='delete.php?evento_id=" . $row['evento_id'] . "' onclick=\"return confirm('Deseja excluir?')\">🗑️</a></td>";
+  echo "<td><a class='btn btn-danger' href='delete.php?evento_id=" . $row['evento_id'] . "' onclick=\"return confirm('Deseja excluir?')\">Deletar</a></td>";
   echo "</tr>";
 }
-echo "</table>";
+echo "</tbody></table>";
 ?>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+
+<script>
+  $(document).ready(function () {
+    $('#tabelaEventos').DataTable({
+      dom: 'Bfrtip',
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json'
+      }
+    });
+  });
+</script>
+

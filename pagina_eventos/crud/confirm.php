@@ -2,7 +2,7 @@
 include 'db.php';
 
 // Recebe os dados do formulário
-$id = $_POST['evento_id'];
+$evento_id = $_POST['evento_id'];
 $colaborador = $_POST['evento_idColaborador'];
 $responsavel = $_POST['evento_idResponsavel'];
 $categoria = $_POST['eventoCategoria_id'];
@@ -24,7 +24,7 @@ $sql = "INSERT INTO tb_sisco_evento (
     evento_hora, 
     evento_idDiscente
 ) VALUES (
-    '$id',
+    '$evento_id',
     '$colaborador', 
     '$responsavel', 
     '$categoria', 
